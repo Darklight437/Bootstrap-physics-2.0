@@ -34,9 +34,8 @@ bool aieProject2D1App::startup()
 	m_PhysicsScene->setTimeStep(0.01f);
 	
 	Sphere* ball;
-	//RigidBody* rb;
-	//rb = new RigidBody();
-	ball = new Sphere(glm::vec2(-40, 0), glm::vec2(10, 30), 3.0f, 1, glm::vec4(1, 0, 0, 1));
+
+	ball = new Sphere(glm::vec2(-40, 0), glm::vec2(0, 0), 3.0f, 10, glm::vec4(0, 1, 0, 1));
 	m_PhysicsScene->addActor(ball);
 
 	return true;
@@ -61,7 +60,7 @@ void aieProject2D1App::update(float deltaTime)
 
 
 
-	
+	m_PhysicsScene->debugScene();
 
 	// exit the application
 	if (input->isKeyDown(aie::INPUT_KEY_ESCAPE))
@@ -86,7 +85,7 @@ void aieProject2D1App::draw()
 	aie::Gizmos::draw2D(glm::ortho<float>(-100, 100, -100 / aspectRatio, 100 / aspectRatio, -1.0f, 1.0f));
 	
 	// output some text, uses the last used colour
-	m_2dRenderer->drawText(m_font, "Press ESC to quit", 0, 0);
+	//m_2dRenderer->drawText(m_font, "Press ESC to quit", 0, 0);
 
 	// done drawing sprites
 	m_2dRenderer->end();

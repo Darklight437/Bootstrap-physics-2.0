@@ -21,7 +21,7 @@ void PhysicsScene::update(float deltatime)
 	{
 		for (auto pActor: m_actors)
 		{
-			pActor->FixedUpdate(m_gravity, m_timeStep);
+			pActor->fixedUpdate(m_gravity, m_timeStep);
 		}
 		accumulatedTime -= m_timeStep;
 
@@ -65,8 +65,9 @@ void PhysicsScene::debugScene()
 	int count = 0;
 	for (auto pActor : m_actors)
 	{
-		std::cout << count << ":";
+		count++;
 	}
+	std::cout << count << ":";
 }
 
 
