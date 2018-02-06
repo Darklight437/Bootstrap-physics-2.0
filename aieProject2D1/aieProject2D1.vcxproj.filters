@@ -27,7 +27,7 @@
       <Filter>Source Files\PhysicsEngine</Filter>
     </ClCompile>
     <ClCompile Include="PhysicsObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\PhysicsEngine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
