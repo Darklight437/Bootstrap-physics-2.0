@@ -1,8 +1,8 @@
 #pragma once
-#include "vector"
 #include <glm/vec2.hpp>
-#include "PhysicsObject.h"
 #include <list>
+#include "PhysicsObject.h"
+#include "vector"
 class PhysicsScene
 {
 public:

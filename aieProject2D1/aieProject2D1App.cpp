@@ -35,7 +35,7 @@ bool aieProject2D1App::startup()
 	
 	Sphere* ball;
 	RigidBody* rb;
-	rb = new RigidBody();
+	//rb = new RigidBody();
 	rb = new Sphere(glm::vec2(-40, 0), glm::vec2(10, 30), 3.0f, 1, glm::vec4(1, 0, 0, 1));
 
 	return true;
