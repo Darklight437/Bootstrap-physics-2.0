@@ -22,8 +22,19 @@ void Sphere::makeGizmo()
 
 bool Sphere::checkCollision(PhysicsObject * pOther)
 {
-	dynamic_cast<Sphere*> (pOther);
+	glm::vec2 otherPos;
+	float otherRad;
+	if (dynamic_cast<Sphere*>(pOther) != nullptr)
+	{
+		otherPos = dynamic_cast<Sphere*>(pOther)->getPosition();
+		otherRad = dynamic_cast<Sphere*>(pOther)->getRadius();
+	}
+	glm::vec2 distanceBetween = m_position - otherPos;
 	
+	if ((distanceBetween.length()) < (m_radius + otherRad))
+	{
+		return true;
+	}
 
 	return false;
 }

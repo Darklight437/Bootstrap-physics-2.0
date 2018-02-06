@@ -1,5 +1,5 @@
 #include "PhysicsScene.h"
-
+#include "RigidBody.h"
 
 
 PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(glm::vec2(0, 0))
@@ -9,6 +9,9 @@ PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(glm::vec2(0, 0))
 
 void PhysicsScene::update(float deltatime)
 {
+
+	static std::list<PhysicsObject*> dirty;
+
 	//update physics at a fixed timestep
 
 	static float accumulatedTime = 0.0f;
@@ -20,8 +23,32 @@ void PhysicsScene::update(float deltatime)
 		{
 			pActor->FixedUpdate(m_gravity, m_timeStep);
 		}
-
 		accumulatedTime -= m_timeStep;
+
+		//check for collisions (ideally you'd want to have some sort of scene manager in place
+		for (auto pActor : m_actors)
+		{
+			for (auto pOther : m_actors)
+			{
+				if (pActor == pOther)
+				{
+					continue;
+				}
+				if (std::find(dirty.begin(), dirty.end(), pActor) != dirty.end() && 
+					std::find(dirty.begin(), dirty.end(), pOther) != dirty.end())
+				{
+					continue;
+				}
+				RigidBody* pRigid = dynamic_cast<RigidBody*> (pActor);
+				if (pRigid->checkCollision(pOther) == true)
+				{
+					pRigid->applyForceToActor(dynamic_cast<RigidBody*>(pOther), pRigid->getVelocity() * pRigid->getMass());
+					dirty.push_back(pRigid);
+					dirty.push_back(pOther);
+				}
+
+			}
+		}
 	}
 }
 
