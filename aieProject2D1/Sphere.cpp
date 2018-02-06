@@ -14,6 +14,12 @@ Sphere::~Sphere()
 {
 }
 
+void Sphere::fixedUpdate(glm::vec2 gravity, float timestep)
+{
+	applyForce(gravity * m_mass * timestep);
+	m_position += m_velocity * timestep;
+}
+
 void Sphere::makeGizmo()
 {
 	aie::Gizmos::add2DCircle(m_position, m_radius, 20, m_colour);

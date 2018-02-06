@@ -34,9 +34,10 @@ bool aieProject2D1App::startup()
 	m_PhysicsScene->setTimeStep(0.01f);
 	
 	Sphere* ball;
-	RigidBody* rb;
+	//RigidBody* rb;
 	//rb = new RigidBody();
-	rb = new Sphere(glm::vec2(-40, 0), glm::vec2(10, 30), 3.0f, 1, glm::vec4(1, 0, 0, 1));
+	ball = new Sphere(glm::vec2(-40, 0), glm::vec2(10, 30), 3.0f, 1, glm::vec4(1, 0, 0, 1));
+	m_PhysicsScene->addActor(ball);
 
 	return true;
 }
