@@ -1,6 +1,6 @@
 #include "PhysicsScene.h"
 #include "RigidBody.h"
-
+#include <iostream>
 
 PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(glm::vec2(0, 0))
 {
@@ -46,9 +46,9 @@ void PhysicsScene::update(float deltatime)
 					dirty.push_back(pRigid);
 					dirty.push_back(pOther);
 				}
-
 			}
 		}
+		dirty.clear();
 	}
 }
 
@@ -57,6 +57,15 @@ void PhysicsScene::updateGizmos()
 	for (auto pActor : m_actors )
 	{
 		pActor->makeGizmo();
+	}
+}
+
+void PhysicsScene::debugScene()
+{
+	int count = 0;
+	for (auto pActor : m_actors)
+	{
+		std::cout << count << ":";
 	}
 }
 
