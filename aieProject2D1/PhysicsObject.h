@@ -1,7 +1,7 @@
 #pragma once
 #include <glm/vec2.hpp>
 
-enum class shapeType{ PLANE = 0, CIRCLE, BOX};
+enum shapeType{ PLANE = 0, CIRCLE, BOX};
 
 class PhysicsObject
 {
