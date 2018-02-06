@@ -2,6 +2,7 @@
 #include "Texture.h"
 #include "Font.h"
 #include "Input.h"
+
 #include <glm/ext.hpp>
 #include <Gizmos.h>
 
@@ -29,8 +30,14 @@ bool aieProject2D1App::startup()
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
 
 	m_PhysicsScene = new PhysicsScene();
+	m_PhysicsScene->setGravity(glm::vec2(0, 0));
 	m_PhysicsScene->setTimeStep(0.01f);
 	
+	Sphere* ball;
+	RigidBody* rb;
+	rb = new RigidBody();
+	rb = new Sphere(glm::vec2(-40, 0), glm::vec2(10, 30), 3.0f, 1, glm::vec4(1, 0, 0, 1));
+
 	return true;
 }
 

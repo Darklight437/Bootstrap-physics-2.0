@@ -73,12 +73,19 @@ void PhysicsScene::debugScene()
 
 PhysicsScene::~PhysicsScene()
 {
+	for (auto pActor : m_actors)
+	{
+		delete pActor;
+	}
 }
 
 void PhysicsScene::addActor(PhysicsObject * actor)
 {
+	m_actors.push_back(actor);
 }
 
 void PhysicsScene::removeActor(PhysicsObject * actor)
 {
+	m_actors.erase(std::find(m_actors.begin(), m_actors.end(), actor));
+	
 }
