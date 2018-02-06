@@ -12,6 +12,9 @@
     <Filter Include="Source Files\PhysicsEngine">
       <UniqueIdentifier>{f31c9393-8ccd-43b2-946f-3749073d6804}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PhysicsEngine\shape types">
+      <UniqueIdentifier>{f59e79c6-d0a7-46e5-b851-2e75711069ef}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="aieProject2D1App.cpp">
@@ -29,6 +32,9 @@
     <ClCompile Include="PhysicsObject.cpp">
       <Filter>Source Files\PhysicsEngine</Filter>
     </ClCompile>
+    <ClCompile Include="Sphere.cpp">
+      <Filter>Source Files\PhysicsEngine\shape types</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aieProject2D1App.h">
@@ -42,6 +48,9 @@
     </ClInclude>
     <ClInclude Include="PhysicsObject.h">
       <Filter>Source Files\PhysicsEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
