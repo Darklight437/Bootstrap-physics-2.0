@@ -1,13 +1,14 @@
 #include "Sphere.h"
 #include <Gizmos.h>
-
+#include <iostream>
 
 Sphere::Sphere(glm::vec2 position, glm::vec2 velocity, float mass,
 	float radius, glm::vec4 colour) : RigidBody(CIRCLE, position, velocity, 0, mass)
 {
-	m_position = position;
+	
 	m_radius = radius;
 	m_colour = colour;
+	
 }
 
 
@@ -38,8 +39,11 @@ bool Sphere::checkCollision(PhysicsObject * pOther)
 	}
 	glm::vec2 distanceBetween = m_position - otherPos;
 	
-	if ((distanceBetween.length()) < (m_radius + otherRad))
+	if (glm::distance( m_position , otherPos) <= (m_radius + otherRad))
 	{
+		glm::vec2 separateTeleport(glm::normalize(distanceBetween).x * 0.1 , 0);
+		std::cout << glm::distance(m_position, otherPos) << std::endl;
+		dynamic_cast<Sphere*>(pOther)->m_position -= separateTeleport;
 		return true;
 	}
 
