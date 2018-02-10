@@ -35,7 +35,9 @@ bool aieProject2D1App::startup()
 	m_PhysicsScene->setTimeStep(0.01f);
 	
 	
-	//draw some balls
+	//create the simulation
+
+	setupContinuousDemo(glm::vec2(5,5),0.3f, 4.0f, );
 	
 	return true;
 }
@@ -53,7 +55,7 @@ void aieProject2D1App::setupContinuousDemo(glm::vec2 startpos, float inclination
 		//calculate the x, y position of the projectile at time t
 
 		aie::Gizmos::add2DCircle(glm::vec2(startpos.x, startpos.y), radius, segments, colour);
-
+		t += tstep;
 	}
 }
 
@@ -69,7 +71,7 @@ void aieProject2D1App::update(float deltaTime)
 
 	// input example
 	aie::Input* input = aie::Input::getInstance();
-	aie::Gizmos::clear();
+	//aie::Gizmos::clear();
 	
 	m_PhysicsScene->update(deltaTime);
 	m_PhysicsScene->updateGizmos();
