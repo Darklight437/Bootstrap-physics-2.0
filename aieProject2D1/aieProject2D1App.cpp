@@ -37,7 +37,7 @@ bool aieProject2D1App::startup()
 	
 	//create the simulation
 
-	setupContinuousDemo(glm::vec2(5,5),0.3f, 4.0f, );
+	setupContinuousDemo(glm::vec2(-40,0),20, 9.8, -9.8);
 	
 	return true;
 }
@@ -45,16 +45,22 @@ bool aieProject2D1App::startup()
 void aieProject2D1App::setupContinuousDemo(glm::vec2 startpos, float inclination, float speed, float gravity)
 {
 	float t = 0;
-	float tstep = 0.5f;
+	float tstep = 0.1f;
 	float radius = 1.0f;
 	int segments = 12;
 	glm::vec4 colour = glm::vec4(1, 1, 0, 1);
 
+	
+
 	while (t <= 5)
 	{
 		//calculate the x, y position of the projectile at time t
+		float x = 0;
+		float y = 0;
+		x = startpos.x + speed * t;
+		y = startpos.y + (speed* t) + gravity / 2 * (t *t);
 
-		aie::Gizmos::add2DCircle(glm::vec2(startpos.x, startpos.y), radius, segments, colour);
+		aie::Gizmos::add2DCircle(glm::vec2(x, y), radius, segments, colour);
 		t += tstep;
 	}
 }
