@@ -1,5 +1,4 @@
 #pragma once
-#include <glm\vec2.hpp>
 #include "PhysicsObject.h"
 class Plane :
 	public PhysicsObject
