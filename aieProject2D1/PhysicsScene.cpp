@@ -78,6 +78,22 @@ void PhysicsScene::debugScene()
 	std::cout << count << ":";*/
 }
 
+void PhysicsScene::checkForCollision()
+{
+	int actorCount = m_actors.size();
+	//checking against all objects for collisions except this one
+
+	for (int outer = 0; outer < actorCount - 1; outer++)
+	{
+		for (int inner = outer + 1; inner < actorCount; inner++)
+		{
+			PhysicsObject* object1 = m_actors[outer];
+			PhysicsObject* object2 = m_actors[inner];
+			int shapeId1 = object1-
+		}
+	}
+}
+
 
 
 PhysicsScene::~PhysicsScene()

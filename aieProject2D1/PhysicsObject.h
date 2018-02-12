@@ -13,6 +13,7 @@ public:
 	virtual void debug() = 0;
 	virtual void makeGizmo() = 0;
 	virtual void resetPosition() {}
+	virtual shapeType getShapeID() { return m_shapeID; }
 	~PhysicsObject();
 
 protected:
