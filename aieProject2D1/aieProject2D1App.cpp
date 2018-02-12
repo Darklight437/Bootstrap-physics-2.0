@@ -31,17 +31,21 @@ bool aieProject2D1App::startup()
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
 
 	m_PhysicsScene = new PhysicsScene();
-	m_PhysicsScene->setGravity(glm::vec2(0, 0));
+	m_PhysicsScene->setGravity(glm::vec2(0, -9.8));
 	m_PhysicsScene->setTimeStep(0.01f);
 	
 	
-	//create the simulation
-
-	setupContinuousDemo(glm::vec2(-40,0),20, 9.8, -9.8);
 	
+	
+	//setupContinuousDemo(glm::vec2(-40,0),20, 9.8, -9.8);
+	
+	//m_PhysicsScene->addActor(new Sphere(glm::vec2(-40, 0), glm::vec2(9.8, 9.8), 1.0f, 1.0f, glm::vec4(0, 0, 1, 1)));
+
 	return true;
 }
 
+
+//uses kinematic formulae to accurately simulate physics (does not work in real time)
 void aieProject2D1App::setupContinuousDemo(glm::vec2 startpos, float inclination, float speed, float gravity)
 {
 	float t = 0;
