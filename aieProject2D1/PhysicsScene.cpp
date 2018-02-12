@@ -89,7 +89,16 @@ void PhysicsScene::checkForCollision()
 		{
 			PhysicsObject* object1 = m_actors[outer];
 			PhysicsObject* object2 = m_actors[inner];
-			int shapeId1 = object1-
+			int shapeId1 = object1->getShapeID();
+			int shapeId2 = object2->getShapeID();
+
+			//using function pointers
+			int functionIdx = (shapeId1 * SHAPE_COUNT) + shapeId2;
+			fn collisionFunctionPtr = collisionFunctionArray[functionIdx];
+			if (collisionFunctionPtr!= nullptr)
+			{
+				collisionFunctionPtr(object1, object2);
+			}
 		}
 	}
 }
