@@ -1,5 +1,7 @@
 #include "PhysicsScene.h"
 #include "RigidBody.h"
+#include "Sphere.h"
+#include "Plane.h"
 #include <iostream>
 
 PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(glm::vec2(0, 0))
@@ -103,6 +105,26 @@ void PhysicsScene::checkForCollision()
 			}
 		}
 	}
+}
+
+bool PhysicsScene::Sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
+{
+	//cast objects to type shpere
+	Sphere* sphere1 = dynamic_cast<Sphere*>(obj1);
+	Sphere* sphere2 = dynamic_cast<Sphere*>(obj2);
+
+	//test for collision
+	if (sphere1 != nullptr && sphere2 != nullptr)
+	{
+
+		//if spheres are overlapping
+		if (glm::distance(sphere1->getPosition(),sphere2->getPosition()) <= (sphere1->getRadius() + sphere2->getRadius()))
+		{
+			sphere1->applyForce(-sphere1->getVelocity());
+			sphere2->applyForce(-sphere2->getVelocity());
+		}
+	}
+	return false;
 }
 
 PhysicsScene::~PhysicsScene()

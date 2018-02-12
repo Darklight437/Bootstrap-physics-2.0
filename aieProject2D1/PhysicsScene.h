@@ -28,7 +28,7 @@ public:
 	static bool Plane2Sphere(PhysicsObject*, PhysicsObject*) { return false; }
 	static bool Plane2Box(PhysicsObject*, PhysicsObject*) { return false; }
 	static bool Sphere2Plane(PhysicsObject*, PhysicsObject*) { return false; }
-	static bool Sphere2Sphere(PhysicsObject*, PhysicsObject*) { return false; }
+	static bool Sphere2Sphere(PhysicsObject*, PhysicsObject*);
 	static bool Sphere2Box(PhysicsObject*, PhysicsObject*) { return false; }
 	static bool Box2Plane(PhysicsObject*, PhysicsObject*) { return false; }
 	static bool Box2Sphere(PhysicsObject*, PhysicsObject*) { return false; }

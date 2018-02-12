@@ -39,7 +39,7 @@ bool aieProject2D1App::startup()
 	
 	//setupContinuousDemo(glm::vec2(-40,0),20, 9.8, -9.8);
 	
-	//m_PhysicsScene->addActor(new Sphere(glm::vec2(-40, 0), glm::vec2(9.8, 9.8), 1.0f, 1.0f, glm::vec4(0, 0, 1, 1)));
+	m_PhysicsScene->addActor(new Sphere(glm::vec2(-40, 0), glm::vec2(9.8, 9.8), 1.0f, 1.0f, glm::vec4(0, 0, 1, 1)));
 
 	return true;
 }
