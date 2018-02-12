@@ -4,6 +4,8 @@
 
 Plane::Plane() : PhysicsObject(PLANE)
 {
+	m_distanceToOrigin = 0;
+	m_normal = glm::vec2(0, 1);
 }
 
 Plane::Plane(glm::vec2 normal, float distance) : PhysicsObject(PLANE)

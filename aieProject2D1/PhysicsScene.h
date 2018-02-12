@@ -21,6 +21,14 @@ public:
 	void setTimeStep(const float timeStep) { m_timeStep = timeStep; }
 	float getTimeStep() const { return m_timeStep; }
 
+
+	//possible collisions
+	static bool Plane2Plane(PhysicsObject*, PhysicsObject*);
+	static bool Plane2Sphere(PhysicsObject*, PhysicsObject*);
+	static bool Sphere2Plane(PhysicsObject*, PhysicsObject*);
+	static bool Sphere2Sphere(PhysicsObject*, PhysicsObject*);
+	
+
 protected:
 	glm::vec2 m_gravity;
 	float m_timeStep;

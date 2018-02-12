@@ -7,6 +7,14 @@ PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(glm::vec2(0, 0))
 }
 
 
+typedef bool(*fn)(PhysicsObject*, PhysicsObject*);
+
+static fn collisionFunctionArray[] =
+{
+	PhysicsScene::Plane2Plane,  PhysicsScene::Plane2Sphere,
+	PhysicsScene::Sphere2Plane, PhysicsScene::Sphere2Sphere,
+};
+
 void PhysicsScene::update(float deltatime)
 {
 
@@ -62,12 +70,12 @@ void PhysicsScene::updateGizmos()
 
 void PhysicsScene::debugScene()
 {
-	int count = 0;
+	/*int count = 0;
 	for (auto pActor : m_actors)
 	{
 		count++;
 	}
-	std::cout << count << ":";
+	std::cout << count << ":";*/
 }
 
 
