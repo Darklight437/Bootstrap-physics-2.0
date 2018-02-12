@@ -4,6 +4,7 @@
 
 PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(glm::vec2(0, 0))
 {
+	
 }
 
 
@@ -11,8 +12,9 @@ typedef bool(*fn)(PhysicsObject*, PhysicsObject*);
 
 static fn collisionFunctionArray[] =
 {
-	PhysicsScene::Plane2Plane,  PhysicsScene::Plane2Sphere,
-	PhysicsScene::Sphere2Plane, PhysicsScene::Sphere2Sphere,
+	PhysicsScene::Plane2Plane,  PhysicsScene::Plane2Sphere, PhysicsScene::Plane2Box,
+	PhysicsScene::Sphere2Plane, PhysicsScene::Sphere2Sphere, PhysicsScene::Sphere2Box,
+	PhysicsScene::Box2Plane, PhysicsScene::Box2Sphere, PhysicsScene::Box2Box
 };
 
 void PhysicsScene::update(float deltatime)
@@ -102,8 +104,6 @@ void PhysicsScene::checkForCollision()
 		}
 	}
 }
-
-
 
 PhysicsScene::~PhysicsScene()
 {
