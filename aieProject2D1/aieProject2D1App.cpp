@@ -33,12 +33,14 @@ bool aieProject2D1App::startup()
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
 
 	m_PhysicsScene = new PhysicsScene();
-	m_PhysicsScene->setGravity(glm::vec2(0, 0));
+	m_PhysicsScene->setGravity(glm::vec2(0, -9.8));
 	m_PhysicsScene->setTimeStep(0.01f);
 	
 	
 	m_PhysicsScene->addActor(new Box(glm::vec2(-40, 5), glm::vec2(10, 0), glm::vec2(8, 8), 1.0f, glm::vec4(1, 0, 0, 1)));
-	m_PhysicsScene->addActor(new Box(glm::vec2(40, 0), glm::vec2(-10, 0), glm::vec2(6, 6), 1.0f, glm::vec4(0, 0, 1, 1)));
+	m_PhysicsScene->addActor(new Plane(glm::vec2(0, -1), 20));
+	//m_PhysicsScene->addActor(new Box(glm::vec2(40, 0), glm::vec2(-10, 0), glm::vec2(6, 6), 1.0f, glm::vec4(0, 0, 1, 1)));
+
 	
 	//setupContinuousDemo(glm::vec2(-40,0),20, 9.8, -9.8);
 	//for (int i = 0; i < 10; i++)

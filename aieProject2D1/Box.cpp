@@ -19,7 +19,7 @@ Box::~Box()
 
 void Box::makeGizmo()
 {
-	aie::Gizmos::add2DAABB(m_position, m_dimentions, m_colour);
+	aie::Gizmos::add2DAABBFilled(m_position, m_dimentions, m_colour);
 }
 
 void Box::fixedUpdate(glm::vec2 gravity, float timestep)

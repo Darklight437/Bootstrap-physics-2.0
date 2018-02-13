@@ -92,12 +92,24 @@ void PhysicsScene::checkForCollision()
 	}
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Collision functions
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 bool PhysicsScene::Plane2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 {
 	PhysicsObject* new1 = obj2;
 	PhysicsObject* new2 = obj1;
 	Sphere2Plane(new1, new2);
 	//hopefully
+	return true;
+}
+
+bool PhysicsScene::Plane2Box(PhysicsObject* obj1, PhysicsObject* obj2)
+{
+	PhysicsObject* newObj1 = obj2;
+	PhysicsObject* newObj2 = obj1;
+	Box2Plane(newObj1, newObj2);
 	return true;
 }
 
@@ -160,22 +172,33 @@ bool PhysicsScene::Box2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 	{
 		glm::vec2 collisionNormal = plane->getNormal();
 
-		float corner1Dot = glm::dot(box->getCorner(1), plane->getNormal() - plane->getDistance());
-		float corner2Dot = glm::dot(box->getCorner(2), plane->getNormal() - plane->getDistance());
-		float corner3Dot = glm::dot(box->getCorner(3), plane->getNormal() - plane->getDistance());
-		float corner4Dot = glm::dot(box->getCorner(4), plane->getNormal() - plane->getDistance());
+		float corner1Dot = glm::dot(box->getCorner(1), plane->getNormal()) - plane->getDistance();
+		float corner2Dot = glm::dot(box->getCorner(2), plane->getNormal()) - plane->getDistance();
+		float corner3Dot = glm::dot(box->getCorner(3), plane->getNormal()) - plane->getDistance();
+		float corner4Dot = glm::dot(box->getCorner(4), plane->getNormal()) - plane->getDistance();
 
-		if (std::signbit(corner1Dot) != signbit(corner4Dot))
+		if (std::signbit(corner1Dot) != std::signbit(corner4Dot))
 		{
 			//do collision
+			box->applyForce(-box->getVelocity());
+			return true;
+		}
+		if (std::signbit(corner2Dot) != std::signbit(corner3Dot))
+		{
+			//do collision
+			box->applyForce(-box->getVelocity());
+			return true;
 		}
 		
 	}
 
-	
 
-	
+	return false;
+}
 
+bool PhysicsScene::Box2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
+{
+	Box *box = dynamic_cast<Box*>(obj1);
 	return false;
 }
 
@@ -195,7 +218,7 @@ bool PhysicsScene::Box2Box(PhysicsObject* obj1, PhysicsObject* obj2)
 
 	if (!(test1 || test2 || test3 || test4))
 	{
-		std::cout << "a\n";
+		
 		box1->applyForce(-box1->getVelocity());
 		box2->applyForce(-box2->getVelocity());
 		return true;
