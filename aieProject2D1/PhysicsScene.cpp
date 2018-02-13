@@ -3,6 +3,7 @@
 #include "Sphere.h"
 #include "Plane.h"
 #include "box.h"
+#include <glm\ext.hpp>
 #include <iostream>
 
 PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(glm::vec2(0, 0))
@@ -150,8 +151,31 @@ bool PhysicsScene::Sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 	return false;
 }
 
-bool PhysicsScene::Box2Plane(PhysicsObject *, PhysicsObject *)
+bool PhysicsScene::Box2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 {
+	Box *box = dynamic_cast<Box*>(obj1);
+	Plane * plane = dynamic_cast<Plane*>(obj2);
+
+	if (box != nullptr && plane != nullptr)
+	{
+		glm::vec2 collisionNormal = plane->getNormal();
+
+		float corner1Dot = glm::dot(box->getCorner(1), plane->getNormal() - plane->getDistance());
+		float corner2Dot = glm::dot(box->getCorner(2), plane->getNormal() - plane->getDistance());
+		float corner3Dot = glm::dot(box->getCorner(3), plane->getNormal() - plane->getDistance());
+		float corner4Dot = glm::dot(box->getCorner(4), plane->getNormal() - plane->getDistance());
+
+		if (std::signbit(corner1Dot) != signbit(corner4Dot))
+		{
+			//do collision
+		}
+		
+	}
+
+	
+
+	
+
 	return false;
 }
 
