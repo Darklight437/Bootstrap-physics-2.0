@@ -150,11 +150,34 @@ bool PhysicsScene::Sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 	return false;
 }
 
+bool PhysicsScene::Box2Plane(PhysicsObject *, PhysicsObject *)
+{
+	return false;
+}
+
 bool PhysicsScene::Box2Box(PhysicsObject* obj1, PhysicsObject* obj2)
 {
 	//cast objects to type Box
-	* sphere1 = dynamic_cast<Sphere*>(obj1);
-	Sphere* sphere2 = dynamic_cast<Sphere*>(obj2);
+	Box* box1 = dynamic_cast<Box*>(obj1);
+	Box* box2 = dynamic_cast<Box*>(obj2);
+
+	//test for collision
+	//bool test1 = box1->getPosition().x - box1->getDimentions().x / 2 < 
+	
+	bool test1 = (box1->getCorner(4).x < box2->getCorner(1).x);
+	bool test2 = (box2->getCorner(4).x < box1->getCorner(1).x);
+	bool test3 = (box1->getCorner(4).y > box2->getCorner(1).y);
+	bool test4 = (box2->getCorner(4).y > box1->getCorner(1).y);
+
+	if (!(test1 || test2 || test3 || test4))
+	{
+		std::cout << "a\n";
+		box1->applyForce(-box1->getVelocity());
+		box2->applyForce(-box2->getVelocity());
+		return true;
+	}
+
+
 	return false;
 }
 
