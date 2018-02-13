@@ -29,8 +29,8 @@ void Sphere::makeGizmo()
 
 }
 
-bool Sphere::checkCollision(PhysicsObject * pOther)
-{
+//bool Sphere::checkCollision(PhysicsObject * pOther)
+//{
 	//glm::vec2 otherPos;
 	//float otherRad;
 	//if (dynamic_cast<Sphere*>(pOther) != nullptr)
@@ -49,4 +49,4 @@ bool Sphere::checkCollision(PhysicsObject * pOther)
 	//}
 
 	//return false;
-}
+//}

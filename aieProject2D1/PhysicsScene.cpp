@@ -2,6 +2,7 @@
 #include "RigidBody.h"
 #include "Sphere.h"
 #include "Plane.h"
+#include "box.h"
 #include <iostream>
 
 PhysicsScene::PhysicsScene() : m_timeStep(0.01f), m_gravity(glm::vec2(0, 0))
@@ -22,7 +23,7 @@ static fn collisionFunctionArray[] =
 void PhysicsScene::update(float deltatime)
 {
 
-	static std::list<PhysicsObject*> dirty;
+	
 
 	//update physics at a fixed timestep
 
@@ -38,29 +39,12 @@ void PhysicsScene::update(float deltatime)
 		accumulatedTime -= m_timeStep;
 
 		//check for collisions (ideally you'd want to have some sort of scene manager in place
-		for (auto pActor : m_actors)
-		{
-			for (auto pOther : m_actors)
-			{
-				if (pActor == pOther)
-				{
-					continue;
-				}
-				if (std::find(dirty.begin(), dirty.end(), pActor) != dirty.end() && 
-					std::find(dirty.begin(), dirty.end(), pOther) != dirty.end())
-				{
-					continue;
-				}
-				RigidBody* pRigid = dynamic_cast<RigidBody*> (pActor);
-				if (pRigid->checkCollision(pOther) == true)
-				{
-					pRigid->applyForceToActor(dynamic_cast<RigidBody*>(pOther), pRigid->getVelocity() * pRigid->getMass());
-					dirty.push_back(pRigid);
-					dirty.push_back(pOther);
-				}
-			}
-		}
-		dirty.clear();
+		//to determine whether a collision check is necessary
+
+		checkForCollision();
+
+		
+		
 	}
 }
 
@@ -107,6 +91,44 @@ void PhysicsScene::checkForCollision()
 	}
 }
 
+bool PhysicsScene::Plane2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
+{
+	PhysicsObject* new1 = obj2;
+	PhysicsObject* new2 = obj1;
+	Sphere2Plane(new1, new2);
+	//hopefully
+	return true;
+}
+
+bool PhysicsScene::Sphere2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
+{
+	Sphere *sphere = dynamic_cast<Sphere*>(obj1);
+	Plane * plane = dynamic_cast<Plane*>(obj2);
+
+	//if the casts are successful then test for collision
+	if (sphere != nullptr && plane != nullptr)
+	{
+		glm::vec2 collisionNormal = plane->getNormal();
+		float sphereToPlane = glm::dot(sphere->getPosition(), plane->getNormal()) - plane->getDistance();
+
+		//if we are behind the plane
+		if (sphereToPlane < 0)
+		{
+			collisionNormal *= -1;
+			sphereToPlane *= -1;
+		}
+
+		float intersection = sphere->getRadius() - sphereToPlane;
+		if (intersection > 0)
+		{
+			sphere->applyForce(-sphere->getVelocity());
+		}
+	}
+
+
+	return false;
+}
+
 bool PhysicsScene::Sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 {
 	//cast objects to type shpere
@@ -122,10 +144,21 @@ bool PhysicsScene::Sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 		{
 			sphere1->applyForce(-sphere1->getVelocity());
 			sphere2->applyForce(-sphere2->getVelocity());
+			return true;
 		}
 	}
 	return false;
 }
+
+bool PhysicsScene::Box2Box(PhysicsObject* obj1, PhysicsObject* obj2)
+{
+	//cast objects to type Box
+	* sphere1 = dynamic_cast<Sphere*>(obj1);
+	Sphere* sphere2 = dynamic_cast<Sphere*>(obj2);
+	return false;
+}
+
+
 
 PhysicsScene::~PhysicsScene()
 {

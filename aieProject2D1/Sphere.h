@@ -7,7 +7,7 @@ public:
 	~Sphere();
 
 	virtual void makeGizmo();
-	virtual bool checkCollision(PhysicsObject* pOther);
+	//virtual bool checkCollision(PhysicsObject* pOther);
 	virtual void fixedUpdate(glm::vec2 gravity, float timestep);
 
 	float getRadius() { return m_radius; }

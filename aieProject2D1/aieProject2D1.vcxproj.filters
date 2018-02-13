@@ -38,6 +38,9 @@
     <ClCompile Include="Plane.cpp">
       <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aieProject2D1App.h">
@@ -58,5 +61,6 @@
     <ClInclude Include="Plane.h">
       <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClInclude>
+    <ClInclude Include="Box.h" />
   </ItemGroup>
 </Project>

@@ -2,7 +2,8 @@
 #include "Texture.h"
 #include "Font.h"
 #include "Input.h"
-
+#include "Sphere.h"
+#include "Plane.h"
 #include <glm/ext.hpp>
 #include <Gizmos.h>
 
@@ -31,15 +32,22 @@ bool aieProject2D1App::startup()
 	m_font = new aie::Font("../bin/font/consolas.ttf", 32);
 
 	m_PhysicsScene = new PhysicsScene();
-	m_PhysicsScene->setGravity(glm::vec2(0, -9.8));
+	m_PhysicsScene->setGravity(glm::vec2(0, -9.8f));
 	m_PhysicsScene->setTimeStep(0.01f);
 	
 	
 	
 	
 	//setupContinuousDemo(glm::vec2(-40,0),20, 9.8, -9.8);
+	for (int i = 0; i < 10; i++)
+	{
+		m_PhysicsScene->addActor(new Sphere(glm::vec2(-40 + i* 2, i), glm::vec2(10, 0), 1.0f, 1.0f, glm::vec4(0, 0, 1, 1)));
+	}
 	
-	m_PhysicsScene->addActor(new Sphere(glm::vec2(-40, 0), glm::vec2(9.8, 9.8), 1.0f, 1.0f, glm::vec4(0, 0, 1, 1)));
+	//m_PhysicsScene->addActor(new Sphere(glm::vec2(40, 0), glm::vec2(-10, 0), 1.0f, 2.0f, glm::vec4(1, 0, 0, 1)));
+	m_PhysicsScene->addActor(new Plane(glm::vec2(20, 10), -45.0f));
+	m_PhysicsScene->addActor(new Plane(glm::vec2(-20, 10), -45.0f));
+	m_PhysicsScene->addActor(new Plane(glm::vec2(0, 1), -40.0f));
 
 	return true;
 }
@@ -65,6 +73,7 @@ void aieProject2D1App::setupContinuousDemo(glm::vec2 startpos, float inclination
 		y = startpos.y + (speed* t) + gravity / 2 * (t *t);
 
 		aie::Gizmos::add2DCircle(glm::vec2(x, y), radius, segments, colour);
+
 		t += tstep;
 	}
 }
@@ -81,7 +90,7 @@ void aieProject2D1App::update(float deltaTime)
 
 	// input example
 	aie::Input* input = aie::Input::getInstance();
-	//aie::Gizmos::clear();
+	aie::Gizmos::clear();
 	
 	m_PhysicsScene->update(deltaTime);
 	m_PhysicsScene->updateGizmos();
@@ -108,12 +117,12 @@ void aieProject2D1App::draw()
 	// draw your stuff here!
 
 
-	//gizmo orthographic grid
+	//gizmo orthographic grid (draws gizmos too)
 	static float aspectRatio = 16 / 9.f;
 	aie::Gizmos::draw2D(glm::ortho<float>(-100, 100, -100 / aspectRatio, 100 / aspectRatio, -1.0f, 1.0f));
 	
 	// output some text, uses the last used colour
-	//m_2dRenderer->drawText(m_font, "Press ESC to quit", 0, 0);
+	m_2dRenderer->drawText(m_font, "Press ESC to quit", 0, 0);
 
 	// done drawing sprites
 	m_2dRenderer->end();

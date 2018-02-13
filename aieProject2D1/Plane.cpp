@@ -1,5 +1,5 @@
 #include "Plane.h"
-#include <glm\vec4.hpp>
+#include <glm\ext.hpp>
 #include <Gizmos.h>
 
 Plane::Plane() : PhysicsObject(PLANE)
@@ -10,6 +10,8 @@ Plane::Plane() : PhysicsObject(PLANE)
 
 Plane::Plane(glm::vec2 normal, float distance) : PhysicsObject(PLANE)
 {
+	m_normal = glm::normalize(normal);
+	m_distanceToOrigin = distance;
 }
 
 
