@@ -199,6 +199,27 @@ bool PhysicsScene::Box2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 bool PhysicsScene::Box2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 {
 	Box *box = dynamic_cast<Box*>(obj1);
+	Sphere *sphere = dynamic_cast<Sphere*>(obj2);
+
+	if (box != nullptr && sphere != nullptr)
+	{
+		glm::vec2 collisionPoint = (glm::normalize(sphere->getPosition() - box->getPosition())* sphere->getRadius());
+		//if collisionpoint is (within box) then collision has occurred
+		//left of boxright & right of boxleft
+		//up of boxdown & down of boxup
+		bool test1 = ((box->getCorner(1).x < collisionPoint.x) && (box->getCorner(2).x > collisionPoint.x));
+		bool test2 = (box->getCorner(1).y > collisionPoint.y && box->getCorner(3).y < collisionPoint.y);
+		if (test1)
+		{
+			if (test2)
+			{
+				box->applyForce(-box->getVelocity());
+				sphere->applyForce(-sphere->getVelocity());
+			}
+			return false;
+		}
+		
+	}
 	return false;
 }
 
