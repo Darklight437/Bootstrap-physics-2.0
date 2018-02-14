@@ -203,16 +203,18 @@ bool PhysicsScene::Box2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 
 	if (box != nullptr && sphere != nullptr)
 	{
-		glm::vec2 collisionPoint = (glm::normalize(sphere->getPosition() - box->getPosition())* sphere->getRadius());
+		glm::vec2 collisionPoint = (glm::normalize(box->getPosition() - sphere->getPosition())* sphere->getRadius());
+		collisionPoint += sphere->getPosition();
 		//if collisionpoint is (within box) then collision has occurred
 		//left of boxright & right of boxleft
 		//up of boxdown & down of boxup
 		bool test1 = ((box->getCorner(1).x < collisionPoint.x) && (box->getCorner(2).x > collisionPoint.x));
 		bool test2 = (box->getCorner(1).y > collisionPoint.y && box->getCorner(3).y < collisionPoint.y);
-		if (test1)
+		if (test1 == true)
 		{
-			if (test2)
+			if (test2 == true)
 			{
+				
 				box->applyForce(-box->getVelocity());
 				sphere->applyForce(-sphere->getVelocity());
 			}
