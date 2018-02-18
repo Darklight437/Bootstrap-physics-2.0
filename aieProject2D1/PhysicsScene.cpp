@@ -155,8 +155,7 @@ bool PhysicsScene::Sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 		//if spheres are overlapping
 		if (glm::distance(sphere1->getPosition(),sphere2->getPosition()) <= (sphere1->getRadius() + sphere2->getRadius()))
 		{
-			sphere1->applyForce(-sphere1->getVelocity());
-			sphere2->applyForce(-sphere2->getVelocity());
+			sphere1->resolveCollision(sphere2);
 			return true;
 		}
 	}

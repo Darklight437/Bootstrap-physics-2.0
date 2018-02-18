@@ -9,6 +9,17 @@ RigidBody::RigidBody(shapeType shapeID, glm::vec2 position, glm::vec2 velocity, 
 	m_velocity = velocity;
 	m_mass = mass;
 	m_position = position;
+	m_rotation = rotation;
+	
+}
+
+RigidBody::RigidBody(shapeType shapeID, glm::vec2 position, glm::vec2 velocity, float rotation, float mass, float elasticity) : PhysicsObject(shapeID)
+{
+	m_velocity = velocity;
+	m_mass = mass;
+	m_position = position;
+	m_rotation = rotation;
+	m_elasticity = elasticity;
 }
 
 

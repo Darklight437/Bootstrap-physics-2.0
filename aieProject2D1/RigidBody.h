@@ -5,6 +5,7 @@ class RigidBody : public PhysicsObject
 {
 public:
 	RigidBody(shapeType shapeID, glm::vec2 position, glm::vec2 velocity, float rotation, float mass);
+	RigidBody(shapeType shapeID, glm::vec2 position, glm::vec2 velocity, float rotation, float mass, float elasticity);
 	~RigidBody();
 
 	virtual void fixedUpdate(glm::vec2 gravity, float timestep);
