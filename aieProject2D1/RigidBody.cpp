@@ -37,3 +37,18 @@ void RigidBody::applyForceToActor(RigidBody * actor2, glm::vec2 force)
 	applyForce(-force);
 
 }
+
+void RigidBody::resolveCollision(RigidBody * actor2)
+{
+	glm::vec2 normal = glm::normalize(actor2->getPosition() - m_position);
+	glm::vec2 relativeVeclocity = actor2->getVelocity() - m_velocity;
+
+	m_elasticity = 1;
+	float j = glm::dot(-(1 + m_elasticity) * (relativeVeclocity), normal) /
+		glm::dot(normal, normal * ((1 / m_mass) + (1 / actor2->getMass())));
+
+	glm::vec2 force = normal * j;
+
+	applyForceToActor(actor2, force);
+
+}

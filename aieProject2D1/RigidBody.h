@@ -11,6 +11,7 @@ public:
 	virtual void debug();
 	void applyForce(glm::vec2 force);
 	void applyForceToActor(RigidBody* actor2, glm::vec2 force);
+	void resolveCollision(RigidBody* actor2);
 
 	//virtual bool checkCollision(PhysicsObject* pOther) = 0;
 
@@ -19,7 +20,7 @@ public:
 	float getRotation() { return m_rotation; }
 	glm::vec2 getVelocity() { return m_velocity; }
 	float getMass() { return m_mass; }
-
+	void setElasticity(float newElasticityCoefficient) { m_elasticity = newElasticityCoefficient; }
 
 protected:
 
@@ -29,4 +30,5 @@ protected:
 	glm::vec2 m_velocity;
 	float m_mass;
 	float m_rotation; //2D so we only need a single float to represent our rotation
+	float m_elasticity = 1;
 };

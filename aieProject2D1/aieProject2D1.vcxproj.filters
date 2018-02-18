@@ -39,7 +39,7 @@
       <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClCompile>
     <ClCompile Include="Box.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +61,8 @@
     <ClInclude Include="Plane.h">
       <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClInclude>
-    <ClInclude Include="Box.h" />
+    <ClInclude Include="Box.h">
+      <Filter>Source Files\PhysicsEngine\shape types</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
