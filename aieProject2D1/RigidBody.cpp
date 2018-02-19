@@ -29,8 +29,9 @@ RigidBody::~RigidBody()
 
 void RigidBody::fixedUpdate(glm::vec2 gravity, float timestep)
 {
-	applyForce(gravity * m_mass * timestep);
-	m_position += m_velocity * timestep;
+	m_velocity -= m_velocity * m_linearDrag * timestep;
+	m_angularVelocity -= m_angularVelocity * m_angularDrag * timestep;
+	
 }
 
 void RigidBody::debug()
@@ -40,6 +41,7 @@ void RigidBody::debug()
 void RigidBody::applyForce(glm::vec2 force)
 {
 	m_velocity += (force / m_mass);
+	
 }
 
 void RigidBody::applyForceToActor(RigidBody * actor2, glm::vec2 force)
@@ -53,9 +55,15 @@ void RigidBody::resolveCollision(RigidBody * actor2)
 {
 	glm::vec2 normal = glm::normalize(actor2->getPosition() - m_position);
 	glm::vec2 relativeVeclocity = actor2->getVelocity() - m_velocity;
+	//confirm if objects are moving towards eachother
+	if (relativeVeclocity.)
+	{
 
+	}
+
+	float elasticity = (m_elasticity + actor2->getElasticity()) * 0.5f;
 	
-	float j = glm::dot(-(1 + m_elasticity) * (relativeVeclocity), normal) /
+	float j = glm::dot(-(1 + elasticity) * (relativeVeclocity), normal) /
 		glm::dot(normal, normal * ((1 / m_mass) + (1 / actor2->getMass())));
 
 	glm::vec2 force = normal * j;

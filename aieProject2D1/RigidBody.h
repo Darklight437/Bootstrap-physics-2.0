@@ -23,9 +23,11 @@ public:
 	float getMass() { return m_mass; }
 	float getANDrag() { return m_angularDrag; }
 	float getLINDrag() { return m_angularDrag; }
+	float getElasticity() { return m_elasticity; }
 	void setANDrag(float angularDrag) { m_angularDrag = angularDrag; }
 	void setLINDrag(float linearDrag) { m_linearDrag = linearDrag; }
 	void setElasticity(float newElasticityCoefficient) { m_elasticity = newElasticityCoefficient; }
+	
 
 protected:
 
@@ -33,9 +35,10 @@ protected:
 	bool isKinematic;
 	glm::vec2 m_position;
 	glm::vec2 m_velocity;
+	glm::vec2 m_angularVelocity;
 	float m_mass;
 	float m_rotation; //2D so we only need a single float to represent our rotation
 	float m_elasticity = 1;
-	float m_linearDrag;
-	float m_angularDrag;
+	float m_linearDrag = 0.3f;
+	float m_angularDrag = 0.3f;
 };
