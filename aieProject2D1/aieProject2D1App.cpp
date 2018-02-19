@@ -35,9 +35,10 @@ bool aieProject2D1App::startup()
 	m_PhysicsScene = new PhysicsScene();
 	m_PhysicsScene->setGravity(glm::vec2(0, -9.8));
 	m_PhysicsScene->setTimeStep(0.01f);
+
 	
 	//add shapes
-	
+	                                                                    
 	for (int i = 0; i < 10; i++)
 	{
 		m_PhysicsScene->addActor(new Sphere(glm::vec2(40 - i * 5, 5), glm::vec2(-25, 10), 1.0f, 2.0f, 1.1f, glm::vec4(0, 1, 0, 1)));
