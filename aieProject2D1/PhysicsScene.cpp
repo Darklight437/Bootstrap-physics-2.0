@@ -134,7 +134,7 @@ bool PhysicsScene::Sphere2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 		float intersection = sphere->getRadius() - sphereToPlane;
 		if (intersection > 0)
 		{
-			sphere->applyForce(-sphere->getVelocity());
+			plane->resolveCollision(sphere);
 		}
 	}
 
