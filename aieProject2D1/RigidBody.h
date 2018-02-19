@@ -21,6 +21,10 @@ public:
 	float getRotation() { return m_rotation; }
 	glm::vec2 getVelocity() { return m_velocity; }
 	float getMass() { return m_mass; }
+	float getANDrag() { return m_angularDrag; }
+	float getLINDrag() { return m_angularDrag; }
+	void setANDrag(float angularDrag) { m_angularDrag = angularDrag; }
+	void setLINDrag(float linearDrag) { m_linearDrag = linearDrag; }
 	void setElasticity(float newElasticityCoefficient) { m_elasticity = newElasticityCoefficient; }
 
 protected:
@@ -32,4 +36,6 @@ protected:
 	float m_mass;
 	float m_rotation; //2D so we only need a single float to represent our rotation
 	float m_elasticity = 1;
+	float m_linearDrag;
+	float m_angularDrag;
 };
