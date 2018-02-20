@@ -24,6 +24,7 @@ public:
 	glm::vec2 getPosition() { return m_position; }
 	float getRotation() { return m_rotation; }
 	glm::vec2 getVelocity() { return m_velocity; }
+	float getMomentOfInertia() { return m_moment; }
 	float getMass() { return m_mass; }
 	float getANDrag() { return m_angularDrag; }
 	float getLINDrag() { return m_angularDrag; }

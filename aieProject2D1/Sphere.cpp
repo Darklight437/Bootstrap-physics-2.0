@@ -25,7 +25,7 @@ Sphere::~Sphere()
 void Sphere::fixedUpdate(glm::vec2 gravity, float timestep)
 {
 	m_position += m_velocity * timestep;
-	applyForce(gravity * m_mass * timestep);
+	
 	
 }
 
