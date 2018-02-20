@@ -216,7 +216,7 @@ bool PhysicsScene::Box2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 			{
 				
 				box->applyForce(-box->getVelocity());
-				sphere->applyForce(-sphere->getVelocity());
+				sphere->applyForce(-sphere->getVelocity(), collisionPoint);
 				return true;
 			}
 			return false;
