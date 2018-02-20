@@ -89,7 +89,11 @@ void RigidBody::resolveCollision(RigidBody * actor2, glm::vec2 contact, glm::vec
 	if (v1 > v2) //objects are approaching eachother
 	{
 		// calculate the effective mass at contact point for each object
-		// ie how much the contact point will move due to the force applied.		float mass1 = 1.0f / (1.0f / m_mass + (r1 * r1) / m_moment);		float mass2 = 1.0f / (1.0f / actor2->m_mass + (r2*r2) / actor2->m_moment);		float elasticity = (m_elasticity + actor2->getElasticity()) * 0.5f;
+		// ie how much the contact point will move due to the force applied.
+		float mass1 = 1.0f / (1.0f / m_mass + (r1 * r1) / m_moment);
+		float mass2 = 1.0f / (1.0f / actor2->m_mass + (r2*r2) / actor2->m_moment);
+
+		float elasticity = (m_elasticity + actor2->getElasticity()) * 0.5f;
 
 		glm::vec2 force = (1.0f + elasticity)*mass1*mass2 / (mass1 + mass2)*(v1 - v2)*normal;
 

@@ -15,14 +15,14 @@ public:
 	virtual void fixedUpdate(glm::vec2 gravity, float timestep);
 	virtual void debug();
 	void applyForce(glm::vec2 force, glm::vec2 pos);
-	void resolveCollision(RigidBody* actor2, glm::vec2 contact, glm::vec2* collisionNormal = nullptr);
+	void resolveCollision(RigidBody* actor2, glm::vec2 contact, glm::vec2* collisionNormal);
 
 	//virtual bool checkCollision(PhysicsObject* pOther) = 0;
 
 
 	glm::vec2 getPosition() { return m_position; }
-	float getRotation() { return m_rotation; }
 	glm::vec2 getVelocity() { return m_velocity; }
+	float getRotation() { return m_rotation; }
 	float getMomentOfInertia() { return m_moment; }
 	float getMass() { return m_mass; }
 	float getANDrag() { return m_angularDrag; }
