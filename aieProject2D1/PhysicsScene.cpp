@@ -123,7 +123,7 @@ bool PhysicsScene::Sphere2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 	{
 		glm::vec2 collisionNormal = plane->getNormal();
 		float sphereToPlane = glm::dot(sphere->getPosition(), plane->getNormal()) - plane->getDistance();
-
+		glm::vec2 contact = sphere->getPosition() + (collisionNormal * -sphere->getRadius());
 		//if we are behind the plane
 		if (sphereToPlane < 0)
 		{
@@ -134,7 +134,7 @@ bool PhysicsScene::Sphere2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 		float intersection = sphere->getRadius() - sphereToPlane;
 		if (intersection > 0)
 		{
-			plane->resolveCollision(sphere);
+			plane->resolveCollision(sphere, contact);
 		}
 	}
 
@@ -155,6 +155,7 @@ bool PhysicsScene::Sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 		//if spheres are overlapping
 		if (glm::distance(sphere1->getPosition(),sphere2->getPosition()) <= (sphere1->getRadius() + sphere2->getRadius()))
 		{
+			
 			sphere1->resolveCollision(sphere2);
 			return true;
 		}
@@ -251,6 +252,9 @@ bool PhysicsScene::Box2Box(PhysicsObject* obj1, PhysicsObject* obj2)
 	return false;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////////////
+//Collision functions/END
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 PhysicsScene::~PhysicsScene()

@@ -1,6 +1,10 @@
 #pragma once
 #include "PhysicsObject.h"
 #include <glm/ext.hpp>
+
+#define MIN_LINEAR_THRESHOLD  0.01f
+#define MIN_ROTATIONAL_THRESHOLD  0.01f
+
 class RigidBody : public PhysicsObject
 {
 public:
@@ -10,9 +14,9 @@ public:
 
 	virtual void fixedUpdate(glm::vec2 gravity, float timestep);
 	virtual void debug();
-	void applyForce(glm::vec2 force);
-	void applyForceToActor(RigidBody* actor2, glm::vec2 force);
-	void resolveCollision(RigidBody* actor2);
+	void applyForce(glm::vec2 force, glm::vec2 pos);
+	//void applyForceToActor(RigidBody* actor2, glm::vec2 force);
+	void resolveCollision(RigidBody* actor2, glm::vec2 contact, glm::vec2* collisionNormal = nullptr);
 
 	//virtual bool checkCollision(PhysicsObject* pOther) = 0;
 
@@ -42,4 +46,6 @@ protected:
 	float m_elasticity = 1;
 	float m_linearDrag = 0.3f;
 	float m_angularDrag = 0.3f;
+
+
 };
