@@ -28,6 +28,7 @@ public:
 	float getANDrag() { return m_angularDrag; }
 	float getLINDrag() { return m_angularDrag; }
 	float getElasticity() { return m_elasticity; }
+	float getAngularVelocity() { return m_angularVelocity; }
 	void setANDrag(float angularDrag) { m_angularDrag = angularDrag; }
 	void setLINDrag(float linearDrag) { m_linearDrag = linearDrag; }
 	void setElasticity(float newElasticityCoefficient) { m_elasticity = newElasticityCoefficient; }

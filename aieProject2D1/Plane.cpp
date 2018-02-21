@@ -43,10 +43,10 @@ void Plane::resetPosition()
 
 void Plane::resolveCollision(RigidBody * actor2, glm::vec2 position)
 {
-	glm::vec2 normal = m_normal;
+	
 
 	//get the vector perpendicular to the collision normal
-	glm::vec2 pNormal(normal.y, -normal.x);
+	glm::vec2 pNormal(m_normal.y, -m_normal.x);
 
 	//determine the total velocity of the contact point
 	//for both linear and rotational velocity
@@ -55,26 +55,28 @@ void Plane::resolveCollision(RigidBody * actor2, glm::vec2 position)
 	float rOther = glm::dot(position - actor2->getPosition(), pNormal);
 
 	//velocity of the contact point on this object (it's stationary)
-	float v1 = 0;
+	glm::vec2 v1(0);
 
 	// velocity of contact point on actor2
-	float v2 = glm::dot(actor2->getVelocity(), normal) + rOther * actor2->getRotation();
+	glm::vec2 v2 = -actor2->getVelocity();
 
-	if (v1 > v2) //objects are approaching eachother
-	{
+	//if (v1 > v2) //objects are approaching eachother
+	
 		// calculate the effective mass at contact point for each object
 		// ie how much the contact point will move due to the force applied.
 		
 		float mass2 = 1.0f / (1.0f / actor2->getMass() + (rOther * rOther) / actor2->getMomentOfInertia());
 
 		float elasticity = (actor2->getElasticity());
-
-		glm::vec2 force = (1.0f + elasticity)*mass2 / (mass2)*(v1 - v2)*normal;
+		//the magnitude of the impulse force
+		float impulse = glm::dot(-(1.0f + elasticity) * v2, m_normal) / glm::dot(m_normal, m_normal * actor2->getMass());
+		glm::vec2 force(v2 + (impulse / actor2->getMass()) * m_normal);
+		
 
 		//apply equal and opposite forces
 		
 		actor2->applyForce(force, position - actor2->getPosition());
-	}
+	
 
 
 }

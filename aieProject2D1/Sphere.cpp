@@ -22,12 +22,7 @@ Sphere::~Sphere()
 {
 }
 
-void Sphere::fixedUpdate(glm::vec2 gravity, float timestep)
-{
-	m_position += m_velocity * timestep;
-	
-	
-}
+
 
 void Sphere::makeGizmo()
 {

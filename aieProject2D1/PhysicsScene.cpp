@@ -123,17 +123,19 @@ bool PhysicsScene::Sphere2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 	{
 		glm::vec2 collisionNormal = plane->getNormal();
 		float sphereToPlane = glm::dot(sphere->getPosition(), plane->getNormal()) - plane->getDistance();
-		glm::vec2 contact = sphere->getPosition() + (collisionNormal * -sphere->getRadius());
+		
 		//if we are behind the plane
 		if (sphereToPlane < 0)
 		{
 			collisionNormal *= -1;
 			sphereToPlane *= -1;
 		}
+		
 
 		float intersection = sphere->getRadius() - sphereToPlane;
 		if (intersection > 0)
 		{
+			glm::vec2 contact = sphere->getPosition() + (collisionNormal * -sphere->getRadius());
 			plane->resolveCollision(sphere, contact);
 		}
 	}

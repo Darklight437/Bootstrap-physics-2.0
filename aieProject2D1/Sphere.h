@@ -9,7 +9,7 @@ public:
 
 	virtual void makeGizmo();
 	//virtual bool checkCollision(PhysicsObject* pOther);
-	virtual void fixedUpdate(glm::vec2 gravity, float timestep);
+	//virtual void fixedUpdate(glm::vec2 gravity, float timestep);
 
 	float getRadius() { return m_radius; }
 	glm::vec4 getColour() { return m_colour; }

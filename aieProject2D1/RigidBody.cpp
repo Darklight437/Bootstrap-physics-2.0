@@ -30,10 +30,14 @@ RigidBody::~RigidBody()
 void RigidBody::fixedUpdate(glm::vec2 gravity, float timestep)
 {
 	m_velocity -= m_velocity * m_linearDrag * timestep;
+	m_velocity += gravity * timestep;
+
+	m_position += m_velocity * timestep;
+
 	m_rotation += m_angularVelocity * timestep;
 	m_angularVelocity -= m_angularVelocity * m_angularDrag * timestep;
 	
-
+	//applyForce(gravity * m_mass * timestep, m_position);
 
 	if (glm::length(m_velocity) < MIN_LINEAR_THRESHOLD )
 	{
@@ -44,6 +48,8 @@ void RigidBody::fixedUpdate(glm::vec2 gravity, float timestep)
 		m_angularVelocity = 0;
 	}
 
+	
+	
 }
 
 void RigidBody::debug()
