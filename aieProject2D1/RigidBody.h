@@ -8,7 +8,7 @@
 class RigidBody : public PhysicsObject
 {
 public:
-	RigidBody(shapeType shapeID, glm::vec2 position, glm::vec2 velocity, float rotation, float mass);
+	RigidBody(shapeType shapeID, glm::vec2 position = glm::vec2(0), glm::vec2 velocity = glm::vec2(0), float rotation = 0, float mass = 1);
 	RigidBody(shapeType shapeID, glm::vec2 position, glm::vec2 velocity, float rotation, float mass, float elasticity);
 	~RigidBody();
 
@@ -37,16 +37,16 @@ public:
 protected:
 
 
-	bool isKinematic;
-	glm::vec2 m_position;
-	glm::vec2 m_velocity;
-	float m_angularVelocity;
-	float m_moment;
-	float m_mass;
-	float m_rotation; //2D so we only need a single float to represent our rotation
+	bool isKinematic = false;
+	glm::vec2 m_position = glm::vec2(0);
+	glm::vec2 m_velocity = glm::vec2(0);
+	float m_angularVelocity = 0;
+	float m_moment = 0;
+	float m_mass = 0;
+	float m_rotation = 0; //2D so we only need a single float to represent our rotation
 	float m_elasticity = 1;
-	float m_linearDrag = 0.3f;
-	float m_angularDrag = 0.3f;
+	float m_linearDrag = 0.01f;
+	float m_angularDrag = 0.01f;
 
 
 
