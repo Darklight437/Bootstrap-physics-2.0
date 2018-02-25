@@ -41,6 +41,9 @@
     <ClCompile Include="Box.cpp">
       <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClCompile>
+    <ClCompile Include="OBB.cpp">
+      <Filter>Source Files\PhysicsEngine\shape types</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aieProject2D1App.h">
@@ -62,6 +65,9 @@
       <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClInclude>
     <ClInclude Include="Box.h">
+      <Filter>Source Files\PhysicsEngine\shape types</Filter>
+    </ClInclude>
+    <ClInclude Include="OBB.h">
       <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClInclude>
   </ItemGroup>

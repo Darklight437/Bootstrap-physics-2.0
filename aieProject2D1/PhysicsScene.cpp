@@ -16,9 +16,9 @@ typedef bool(*fn)(PhysicsObject*, PhysicsObject*);
 
 static fn collisionFunctionArray[] =
 {
-	PhysicsScene::Plane2Plane,  PhysicsScene::Plane2Sphere, PhysicsScene::Plane2Box,
-	PhysicsScene::Sphere2Plane, PhysicsScene::Sphere2Sphere, PhysicsScene::Sphere2Box,
-	PhysicsScene::Box2Plane, PhysicsScene::Box2Sphere, PhysicsScene::Box2Box
+	PhysicsScene::Plane2Plane,  PhysicsScene::Plane2Sphere, PhysicsScene::Plane2AABB,
+	PhysicsScene::Sphere2Plane, PhysicsScene::Sphere2Sphere, PhysicsScene::Sphere2AABB,
+	PhysicsScene::AABB2Plane, PhysicsScene::AABB2Sphere, PhysicsScene::AABB2AABB
 };
 
 void PhysicsScene::update(float deltatime)
@@ -105,11 +105,11 @@ bool PhysicsScene::Plane2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 	return true;
 }
 
-bool PhysicsScene::Plane2Box(PhysicsObject* obj1, PhysicsObject* obj2)
+bool PhysicsScene::Plane2AABB(PhysicsObject* obj1, PhysicsObject* obj2)
 {
 	PhysicsObject* newObj1 = obj2;
 	PhysicsObject* newObj2 = obj1;
-	Box2Plane(newObj1, newObj2);
+	AABB2Plane(newObj1, newObj2);
 	return true;
 }
 
@@ -165,7 +165,7 @@ bool PhysicsScene::Sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 	return false;
 }
 
-bool PhysicsScene::Box2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
+bool PhysicsScene::AABB2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 {
 	Box *box = dynamic_cast<Box*>(obj1);
 	Plane * plane = dynamic_cast<Plane*>(obj2);
@@ -198,7 +198,7 @@ bool PhysicsScene::Box2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 	return false;
 }
 
-bool PhysicsScene::Box2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
+bool PhysicsScene::AABB2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 {
 	Box *box = dynamic_cast<Box*>(obj1);
 	Sphere *sphere = dynamic_cast<Sphere*>(obj2);
@@ -228,7 +228,7 @@ bool PhysicsScene::Box2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 	return false;
 }
 
-bool PhysicsScene::Box2Box(PhysicsObject* obj1, PhysicsObject* obj2)
+bool PhysicsScene::AABB2AABB(PhysicsObject* obj1, PhysicsObject* obj2)
 {
 	//cast objects to type Box
 	Box* box1 = dynamic_cast<Box*>(obj1);
