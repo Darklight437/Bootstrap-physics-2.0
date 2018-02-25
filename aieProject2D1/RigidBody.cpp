@@ -59,16 +59,19 @@ void RigidBody::debug()
 void RigidBody::applyForce(glm::vec2 force, glm::vec2 pos)
 {
 	m_velocity += (force / m_mass);
-	m_angularVelocity += (force.y * pos.x - force.x * pos.y) / (m_moment);
+	if (m_moment != 0)
+	{
+		m_angularVelocity += (force.y * pos.x - force.x * pos.y) / (m_moment);
+	}
+	else
+	{
+		m_angularVelocity += (force.y * pos.x - force.x * pos.y);
+	}
+	
 
 }
 
-//void RigidBody::applyForceToActor(RigidBody * actor2, glm::vec2 force)
-//{
-//	actor2->applyForce(force);
-//	applyForce(-force);
-//
-//}
+
 
 void RigidBody::resolveCollision(RigidBody * actor2, glm::vec2 contact, glm::vec2* collisionNormal = nullptr)
 {
@@ -94,10 +97,30 @@ void RigidBody::resolveCollision(RigidBody * actor2, glm::vec2 contact, glm::vec
 
 	if (v1 > v2) //objects are approaching eachother
 	{
+		float mass1;
+		float mass2;
 		// calculate the effective mass at contact point for each object
 		// ie how much the contact point will move due to the force applied.
-		float mass1 = 1.0f / (1.0f / m_mass + (r1 * r1) / m_moment);
-		float mass2 = 1.0f / (1.0f / actor2->m_mass + (r2*r2) / actor2->m_moment);
+		//if test to make sure no /by0s occur
+		if (m_moment != 0)
+		{
+			mass1 = 1.0f / (1.0f / m_mass + (r1 * r1) / m_moment);
+		}
+		else
+		{
+			mass1 = 1.0f / (1.0f / m_mass + (r1 * r1));
+		}
+		if (actor2->m_moment != 0)
+		{
+			mass2 = 1.0f / (1.0f / actor2->m_mass + (r2*r2) / actor2->m_moment);
+		}
+		else
+		{
+			mass2 = 1.0f / (1.0f / actor2->m_mass + (r2*r2));
+		}
+
+		
+		
 
 		float elasticity = (m_elasticity + actor2->getElasticity()) * 0.5f;
 

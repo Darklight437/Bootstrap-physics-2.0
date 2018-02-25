@@ -2,7 +2,7 @@
 #include <glm/vec2.hpp>
 
 enum shapeType{ PLANE = 0, CIRCLE, BOX, OBB};
-static int SHAPE_COUNT = shapeType::OBB + 1;
+static int SHAPE_COUNT = shapeType::BOX + 1;
 class PhysicsObject
 {
 

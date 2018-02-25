@@ -165,6 +165,15 @@ bool PhysicsScene::Sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 	return false;
 }
 
+bool PhysicsScene::Sphere2AABB(PhysicsObject* obj1, PhysicsObject* obj2)
+{
+	PhysicsObject* new1;
+	PhysicsObject* new2;
+
+
+	return false;
+}
+
 bool PhysicsScene::AABB2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 {
 	Box *box = dynamic_cast<Box*>(obj1);
