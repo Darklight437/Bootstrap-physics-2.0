@@ -190,17 +190,18 @@ bool PhysicsScene::AABB2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 		float corner2Dot = glm::dot(box->getCorner(2), plane->getNormal()) - plane->getDistance();
 		float corner3Dot = glm::dot(box->getCorner(3), plane->getNormal()) - plane->getDistance();
 		float corner4Dot = glm::dot(box->getCorner(4), plane->getNormal()) - plane->getDistance();
-
+		//if its within bounds  top left to bottom right diagonal
 		if (std::signbit(corner1Dot) != std::signbit(corner4Dot))
 		{
 			//do collision
 			box->applyForce(-box->getVelocity());
 			return true;
 		}
+		//if within bound top right to bottom left
 		if (std::signbit(corner2Dot) != std::signbit(corner3Dot))
 		{
 			//do collision
-			box->applyForce(-box->getVelocity());
+			//plane->resolveCollision(box, )
 			return true;
 		}
 		
