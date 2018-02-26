@@ -33,6 +33,7 @@ public:
 	static bool AABB2Plane(PhysicsObject*, PhysicsObject*);
 	static bool AABB2Sphere(PhysicsObject*, PhysicsObject*);
 	static bool AABB2AABB(PhysicsObject*, PhysicsObject*);
+	static bool OOB2Plane(PhysicsObject*, PhysicsObject*);
 	
 
 protected:

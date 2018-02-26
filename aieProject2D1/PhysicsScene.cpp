@@ -3,6 +3,7 @@
 #include "Sphere.h"
 #include "Plane.h"
 #include "box.h"
+#include "OBB.h"
 #include <glm\ext.hpp>
 #include <iostream>
 
@@ -18,7 +19,8 @@ static fn collisionFunctionArray[] =
 {
 	PhysicsScene::Plane2Plane,  PhysicsScene::Plane2Sphere, PhysicsScene::Plane2AABB,
 	PhysicsScene::Sphere2Plane, PhysicsScene::Sphere2Sphere, PhysicsScene::Sphere2AABB,
-	PhysicsScene::AABB2Plane, PhysicsScene::AABB2Sphere, PhysicsScene::AABB2AABB
+	PhysicsScene::AABB2Plane, PhysicsScene::AABB2Sphere, PhysicsScene::AABB2AABB,
+	PhysicsScene::OOB2Plane
 };
 
 void PhysicsScene::update(float deltatime)
@@ -258,6 +260,15 @@ bool PhysicsScene::AABB2AABB(PhysicsObject* obj1, PhysicsObject* obj2)
 		box2->applyForce(-box2->getVelocity());
 		return true;
 	}
+
+
+	return false;
+}
+
+bool PhysicsScene::OOB2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
+{
+	OBB * box = dynamic_cast<OBB*>(obj1);
+	Plane * plane = dynamic_cast<Plane*>(obj2);
 
 
 	return false;

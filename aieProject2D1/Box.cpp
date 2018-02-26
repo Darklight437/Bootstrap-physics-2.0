@@ -37,21 +37,25 @@ glm::vec2 Box::getCorner(int corner)
 
 	switch (corner)
 	{
+		//top left
 	case 1:
 		
 		cornerPos.x -= m_width;
 		cornerPos.y += m_height;
 		break;
+		//top right
 	case 2:
 		
 		cornerPos.x += m_width;
 		cornerPos.y += m_height;
 		break;
+		//bottom left
 	case 3:
 		
 		cornerPos.x -= m_width;
 		cornerPos.y -= m_height;
 		break;
+		//bottom right
 	case 4:
 		
 		cornerPos.x += m_width;
