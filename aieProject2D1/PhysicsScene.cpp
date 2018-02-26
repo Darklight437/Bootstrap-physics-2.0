@@ -281,9 +281,9 @@ bool PhysicsScene::OOB2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 		glm::vec2 planeOrigin = plane->getNormal() * plane->getDistance();
 		float comFromPlane = glm::dot(box->getPosition() - planeOrigin, plane->getNormal());
 		// check all four corners to see if we've hit the plane
-		for (float x = -box->getMaxDimentions().x; x<box->getWidth(); x += box->getWidth()) 
+		for (float x = -box->getMaxDimentions().x; x < box->getWidth(); x += box->getWidth())
 		{
-			for (float y = -box->getMaxDimentions().y; y<box->getHeight(); y += box->getHeight()) 
+			for (float y = -box->getMaxDimentions().y; y < box->getHeight(); y += box->getHeight())
 			{
 				// get the position of the corner in world space
 				glm::vec2 p = box->getPosition() + x * box->getLocalX() +
@@ -298,7 +298,7 @@ bool PhysicsScene::OOB2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 				// if this corner is on the opposite side from the COM,
 				// and moving further in, we need to resolve the collision
 				if ((distFromPlane > 0 && comFromPlane < 0 && velocityIntoPlane > 0) ||
-					(distFromPlane < 0 && comFromPlane > 0 && velocityIntoPlane < 0)) 
+					(distFromPlane < 0 && comFromPlane > 0 && velocityIntoPlane < 0))
 				{
 					numContacts++;
 					contact += p;
@@ -307,7 +307,7 @@ bool PhysicsScene::OOB2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 			}
 		}
 		// we've had a hit - typically only two corners can contact
-		if (numContacts > 0) 
+		if (numContacts > 0)
 		{
 			// get the average collision velocity into the plane
 			// (covers linear and rotational velocity of all corners involved)
@@ -329,10 +329,11 @@ bool PhysicsScene::OOB2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 			float mass0 = 1.0f / (1.0f / box->getMass() + (r*r) / box->getMoment());
 
 
+		}
+
+
+		return false;
 	}
-
-
-	return false;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
