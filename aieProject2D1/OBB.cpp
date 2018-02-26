@@ -33,10 +33,10 @@ void OBB::makeGizmo()
 
 
 	// draw using local axes
-	glm::vec2 p1 = m_position - m_localX * maxDimentions.x - m_localY * maxDimentions.y;
-	glm::vec2 p2 = m_position + m_localX * maxDimentions.x - m_localY * maxDimentions.y;
-	glm::vec2 p3 = m_position - m_localX * maxDimentions.x + m_localY * maxDimentions.y;
-	glm::vec2 p4 = m_position + m_localX * maxDimentions.x + m_localY * maxDimentions.y;
+	glm::vec2 p1 = m_position - m_localX * m_maxDimentions.x - m_localY * m_maxDimentions.y;
+	glm::vec2 p2 = m_position + m_localX * m_maxDimentions.x - m_localY * m_maxDimentions.y;
+	glm::vec2 p3 = m_position - m_localX * m_maxDimentions.x + m_localY * m_maxDimentions.y;
+	glm::vec2 p4 = m_position + m_localX * m_maxDimentions.x + m_localY * m_maxDimentions.y;
 	aie::Gizmos::add2DTri(p1, p2, p4, m_colour);
 	aie::Gizmos::add2DTri(p1, p4, p3, m_colour);
 }

@@ -169,9 +169,10 @@ bool PhysicsScene::Sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 
 bool PhysicsScene::Sphere2AABB(PhysicsObject* obj1, PhysicsObject* obj2)
 {
-	PhysicsObject* new1;
-	PhysicsObject* new2;
+	PhysicsObject* new1 = obj2;
+	PhysicsObject* new2 = obj1;
 
+	AABB2Sphere(new1, new2);
 
 	return false;
 }
@@ -326,14 +327,16 @@ bool PhysicsScene::OOB2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 			// work out the "effective mass" - this is a combination of moment of
 			// inertia and mass, and tells us how much the contact point velocity
 			// will change with the force we're applying
-			float mass0 = 1.0f / (1.0f / box->getMass() + (r*r) / box->getMoment());
+			float mass0 = 1.0f / (1.0f / box->getMass() + (r*r) / box->getMomentOfInertia());
 
-
+			// and apply the force
+			box->applyForce(acceleration * mass0, localContact); 
 		}
 
 
-		return false;
+		
 	}
+	return false;
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
