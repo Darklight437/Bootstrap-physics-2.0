@@ -12,7 +12,7 @@ OBB::OBB(glm::vec2 position, glm::vec2 velocity, glm::vec2 maxDimentions, float 
 	m_rotation = rotation;
 	m_colour = colour;
 
-
+	m_moment = (m_mass / 12) * (m_maxDimentions.x * m_maxDimentions.x) + (m_maxDimentions.y * m_maxDimentions.y);
 }
 
 
