@@ -21,7 +21,7 @@ protected:
 	glm::vec2 m_maxDimentions = glm::vec2(0);
 	glm::vec4 m_colour = glm::vec4(0, 0, 0, 1);
 
-	glm::vec2 m_localX;
-	glm::vec2 m_localY;
+	glm::vec2 m_localX = glm::vec2(1);
+	glm::vec2 m_localY = glm::vec2(1);
 };
 

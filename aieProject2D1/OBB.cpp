@@ -5,6 +5,13 @@
 OBB::OBB(glm::vec2 position, glm::vec2 velocity, glm::vec2 maxDimentions, float mass, float rotation,
 	glm::vec4 colour) : RigidBody(OBOX, position, velocity, rotation, mass)
 {
+	m_position = position;
+	m_velocity = velocity;
+	m_maxDimentions = maxDimentions;
+	m_mass = mass;
+	m_rotation = rotation;
+	m_colour = colour;
+
 
 }
 

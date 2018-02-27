@@ -45,7 +45,7 @@
       <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClCompile>
     <ClCompile Include="Polygon.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +73,8 @@
     <ClInclude Include="OBB.h">
       <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClInclude>
-    <ClInclude Include="Polygon.h" />
+    <ClInclude Include="Polygon.h">
+      <Filter>Source Files\PhysicsEngine\shape types</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
