@@ -44,6 +44,9 @@
     <ClCompile Include="OBB.cpp">
       <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClCompile>
+    <ClCompile Include="Polygon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="aieProject2D1App.h">
@@ -70,5 +73,6 @@
     <ClInclude Include="OBB.h">
       <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClInclude>
+    <ClInclude Include="Polygon.h" />
   </ItemGroup>
 </Project>

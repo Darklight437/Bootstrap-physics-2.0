@@ -281,7 +281,8 @@ bool PhysicsScene::OOB2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 
 		// which side is the centre of mass on?
 		glm::vec2 planeOrigin = plane->getNormal() * plane->getDistance();
-		float comFromPlane = glm::dot(box->getPosition() - planeOrigin, plane->getNormal());
+		float comFromPlane = glm::dot(box->getPosition() - planeOrigin, plane->getNormal());
+
 		// check all four corners to see if we've hit the plane
 		for (float x = -box->getMaxDimentions().x; x < box->getWidth(); x += box->getWidth())
 		{
