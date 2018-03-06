@@ -4,7 +4,7 @@
 #include <iostream>
 
 //note size is from the midle to the point
-Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float size, int numpoints) :RigidBody(BOX, position, velocity, 0, mass)
+Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float radius, int numpoints) :RigidBody(BOX, position, velocity, 0, mass)
 {
 
 	for (int i = 0; i < numpoints; i++)
@@ -17,8 +17,11 @@ Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float size,
 
 		glm::vec2 currentpoint(sn, cs);
 
+		currentpoint *= -radius;
 
 	}
+
+	
 
 }
 
