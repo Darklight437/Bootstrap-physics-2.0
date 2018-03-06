@@ -1,6 +1,7 @@
 #include "Polygon.h"
 #include <Gizmos.h>
 #include <algorithm>
+#include <iostream>
 
 Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass) :RigidBody(BOX, position, velocity, 0, mass)
 {
@@ -11,11 +12,18 @@ Polygon::~Polygon()
 {
 }
 
-glm::vec2 Polygon::getpoint(int)
+glm::vec2 Polygon::getpoint(int index)
 {
-	std
+	if (index < m_points.size())
+	{
+		return m_points[index];
+	}
+	else
+	{
+		std::cout << "tried to acces a point out of array \n";
+	}
 	
-	return glm::vec2();
+	
 }
 
 void Polygon::createGizmo()
