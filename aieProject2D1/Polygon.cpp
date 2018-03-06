@@ -26,7 +26,11 @@ glm::vec2 Polygon::getpoint(int index)
 	return glm::vec2(0);
 }
 
-void Polygon::createGizmo()
+void Polygon::calculateNormals()
+{
+}
+
+void Polygon::makeGizmo()
 {
 	for (int i = 0; i < m_points.size(); i++)
 	{

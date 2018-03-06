@@ -14,12 +14,13 @@ protected:
 
 
 	void calculateNormals();
-	void createGizmo();
+	void makeGizmo();
 
 	std::vector<glm::vec2> m_points;
 	std::vector<glm::vec2> normals;
 	glm::vec4 m_color = glm::vec4(1, 0, 0, 1);
 	std::vector<glm::vec2> localPoint;
 	std::vector<glm::vec2> localNormals;
+	
 };
 
