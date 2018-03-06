@@ -2,9 +2,11 @@
 #include <Gizmos.h>
 #include <algorithm>
 #include <iostream>
-//note radius is from the midle to the point
-Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float radius, int points) :RigidBody(BOX, position, velocity, 0, mass)
+
+//note size is from the midle to the point
+Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float size, int points) :RigidBody(BOX, position, velocity, 0, mass)
 {
+
 }
 
 
