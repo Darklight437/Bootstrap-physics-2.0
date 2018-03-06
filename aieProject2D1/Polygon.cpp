@@ -4,8 +4,21 @@
 #include <iostream>
 
 //note size is from the midle to the point
-Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float size, int points) :RigidBody(BOX, position, velocity, 0, mass)
+Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float size, int numpoints) :RigidBody(BOX, position, velocity, 0, mass)
 {
+
+	for (int i = 0; i < numpoints; i++)
+	{
+
+		float theta = glm::radians(i * 360 / (float)numpoints);
+
+		float sn = sinf(theta);
+		float cs = cosf(theta);
+
+		glm::vec2 currentpoint(sn, cs);
+
+
+	}
 
 }
 
