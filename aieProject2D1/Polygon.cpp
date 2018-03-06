@@ -2,8 +2,8 @@
 #include <Gizmos.h>
 #include <algorithm>
 #include <iostream>
-
-Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass) :RigidBody(BOX, position, velocity, 0, mass)
+//note radius is from the midle to the point
+Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float radius, int points) :RigidBody(BOX, position, velocity, 0, mass)
 {
 }
 
@@ -37,7 +37,7 @@ void Polygon::makeGizmo()
 		glm::vec2 p1 = m_points[i];
 		glm::vec2 p2 = (m_points[i == m_points.size() - 1 ? 0 : i + 1]);
 
-		aie::Gizmos::add2DTri(m_position, p1, p2, m_color);
+		aie::Gizmos::add2DTri(m_position, p1, p2, m_colour);
 	}
 
 

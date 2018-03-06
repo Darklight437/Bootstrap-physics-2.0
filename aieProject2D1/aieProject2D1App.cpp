@@ -50,7 +50,7 @@ bool aieProject2D1App::startup()
 	//m_PhysicsScene->addActor(new Sphere(glm::vec2(-40, 0), glm::vec2(15, 0), 1.0f, 5.0f, 0.3f, glm::vec4(1, 0, 1, 1)));
 	
 	
-	m_PhysicsScene->addActor(new OBB(glm::vec2(-40, 0), glm::vec2(0), glm::vec2(5, 5), 1.0f, 1.0f, glm::vec4(0, 0, 1, 1)));
+	//m_PhysicsScene->addActor(new OBB(glm::vec2(-40, 0), glm::vec2(0), glm::vec2(5, 5), 1.0f, 1.0f, glm::vec4(0, 0, 1, 1)));
 
 	
 	//setupContinuousDemo(glm::vec2(-40,0),20, 9.8, -9.8);
