@@ -8,7 +8,7 @@ public:
 	Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float radius, int points);
 	~Polygon();
 
-	glm::vec2 getpoint(int index);
+	glm::vec2 getpoint(unsigned int index);
 
 protected:
 

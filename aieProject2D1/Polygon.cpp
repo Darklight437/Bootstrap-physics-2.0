@@ -21,8 +21,6 @@ Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float radiu
 
 	}
 
-	
-
 }
 
 
@@ -30,7 +28,7 @@ Polygon::~Polygon()
 {
 }
 
-glm::vec2 Polygon::getpoint(int index)
+glm::vec2 Polygon::getpoint(unsigned int index)
 {
 	if (index < m_points.size())
 	{
@@ -46,10 +44,11 @@ glm::vec2 Polygon::getpoint(int index)
 
 void Polygon::calculateNormals()
 {
+	//currently feels like this wont cover all cases but should work
 	
-	int sidesNum = m_points.size();
+	unsigned int sidesNum = m_points.size();
 
-	for (int i = 0; i < sidesNum- 1; i++)
+	for (unsigned int i = 0; i < sidesNum- 1; i++)
 	{
 		//get the vector between current vrtx and the next one
 		glm::vec2 currSide = m_points[i] - m_points[i + 1];
@@ -75,14 +74,12 @@ void Polygon::calculateNormals()
 
 void Polygon::makeGizmo()
 {
-	for (int i = 0; i < m_points.size(); i++)
+	for (unsigned int i = 0; i < m_points.size(); i++)
 	{
 		glm::vec2 p1 = m_points[i];
 		glm::vec2 p2 = (m_points[i == m_points.size() - 1 ? 0 : i + 1]);
 
 		aie::Gizmos::add2DTri(m_position, p1, p2, m_colour);
 	}
-
-
 
 }
