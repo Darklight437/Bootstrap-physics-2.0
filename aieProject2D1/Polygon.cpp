@@ -23,7 +23,7 @@ glm::vec2 Polygon::getpoint(int index)
 		std::cout << "tried to acces a point out of array \n";
 	}
 	
-	
+	return glm::vec2(0);
 }
 
 void Polygon::createGizmo()
