@@ -15,6 +15,9 @@
     <Filter Include="Source Files\PhysicsEngine\shape types">
       <UniqueIdentifier>{f59e79c6-d0a7-46e5-b851-2e75711069ef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\PhysicsEngine\shape types\Depreciated/borken">
+      <UniqueIdentifier>{d1b5b735-96fe-4b1b-a1bd-9cc5657dc8e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="aieProject2D1App.cpp">
@@ -38,14 +41,14 @@
     <ClCompile Include="Plane.cpp">
       <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClCompile>
-    <ClCompile Include="Box.cpp">
-      <Filter>Source Files\PhysicsEngine\shape types</Filter>
-    </ClCompile>
-    <ClCompile Include="OBB.cpp">
-      <Filter>Source Files\PhysicsEngine\shape types</Filter>
-    </ClCompile>
     <ClCompile Include="Polygon.cpp">
       <Filter>Source Files\PhysicsEngine\shape types</Filter>
+    </ClCompile>
+    <ClCompile Include="Box.cpp">
+      <Filter>Source Files\PhysicsEngine\shape types\Depreciated/borken</Filter>
+    </ClCompile>
+    <ClCompile Include="OBB.cpp">
+      <Filter>Source Files\PhysicsEngine\shape types\Depreciated/borken</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,14 +70,14 @@
     <ClInclude Include="Plane.h">
       <Filter>Source Files\PhysicsEngine\shape types</Filter>
     </ClInclude>
-    <ClInclude Include="Box.h">
-      <Filter>Source Files\PhysicsEngine\shape types</Filter>
-    </ClInclude>
-    <ClInclude Include="OBB.h">
-      <Filter>Source Files\PhysicsEngine\shape types</Filter>
-    </ClInclude>
     <ClInclude Include="Polygon.h">
       <Filter>Source Files\PhysicsEngine\shape types</Filter>
+    </ClInclude>
+    <ClInclude Include="Box.h">
+      <Filter>Source Files\PhysicsEngine\shape types\Depreciated/borken</Filter>
+    </ClInclude>
+    <ClInclude Include="OBB.h">
+      <Filter>Source Files\PhysicsEngine\shape types\Depreciated/borken</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

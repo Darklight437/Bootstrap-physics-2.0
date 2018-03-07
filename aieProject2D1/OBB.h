@@ -1,5 +1,8 @@
 #pragma once
 #include "RigidBody.h"
+
+
+//DEPRECIATED
 class OBB :
 	public RigidBody
 {

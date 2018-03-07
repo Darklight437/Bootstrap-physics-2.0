@@ -1,5 +1,6 @@
 #pragma once
 #include "RigidBody.h"
+//DEPRECIATED
 class Box :
 	public RigidBody
 {
