@@ -177,16 +177,24 @@ bool PhysicsScene::Plane2Poly(PhysicsObject* obj1, PhysicsObject* obj2)
 
 bool PhysicsScene::Poly2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 {
+
 	return false;
 }
 
 bool PhysicsScene::Sphere2Poly(PhysicsObject* obj1, PhysicsObject* obj2)
 {
+	//maybe adapt plane 2 sphere for this?
+	//multiple checks
 	return false;
 }
 
 bool PhysicsScene::Poly2Poly(PhysicsObject* obj1, PhysicsObject* obj2)
 {
+	Polygon* poly1 = dynamic_cast<Polygon*>(obj1);
+	Polygon* poly2 = dynamic_cast<Polygon*>(obj2);
+
+
+
 	//hahaha do SAT
 	return false;
 }
