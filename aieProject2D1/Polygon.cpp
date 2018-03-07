@@ -48,7 +48,7 @@ void Polygon::reCalculateLocalPoints()
 {
 	for (unsigned int i = 0; i < m_points.size(); i++)
 	{
-		m_points[i]
+		m_points[i];
 	}
 }
 
