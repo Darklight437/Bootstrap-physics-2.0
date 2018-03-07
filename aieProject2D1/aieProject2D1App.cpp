@@ -46,18 +46,9 @@ bool aieProject2D1App::startup()
 	//	m_PhysicsScene->addActor(new Sphere(glm::vec2(40 - i * 5, 5), glm::vec2(-25, 1), 1.0f, 2.0f, 1.1f, glm::vec4(0, 1, 0, 1)));
 	//}
 	
-	m_PhysicsScene->addActor(new Polygon(glm::vec2(20, 10), glm::vec2(0), 1.0f, 5, 4));
-	//m_PhysicsScene->addActor(new Sphere(glm::vec2(-40, 0), glm::vec2(15, 0), 1.0f, 5.0f, 0.3f, glm::vec4(1, 0, 1, 1)));
-	
-	
-	//m_PhysicsScene->addActor(new OBB(glm::vec2(-40, 0), glm::vec2(0), glm::vec2(5, 5), 1.0f, 1.0f, glm::vec4(0, 0, 1, 1)));
+	m_PhysicsScene->addActor(new Polygon(glm::vec2(20, 10), glm::vec2(0, -9.8), 1.0f, 5.0f, 7, glm::vec4(1, 0, 0, 1)));
+	m_PhysicsScene->addActor(new Sphere(glm::vec2(10, 10), glm::vec2(0, 9.8), 1.0f, 2.0f, glm::vec4(1, 0, 0, 1)));
 
-	
-	//setupContinuousDemo(glm::vec2(-40,0),20, 9.8, -9.8);
-	//for (int i = 0; i < 10; i++)
-	//{
-	//	m_PhysicsScene->addActor(new Sphere(glm::vec2(-40 + i* 2, i), glm::vec2(10, 0), 1.0f, 1.0f, glm::vec4(0, 0, 1, 1)));
-	//}
 	
 	//add planes
 

@@ -4,7 +4,7 @@
 #include <iostream>
 
 //note size is from the midle to the point
-Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float radius, int numpoints) :RigidBody(BOX, position, velocity, 0, mass)
+Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float radius, int numpoints, glm::vec4 colour) :RigidBody(POLY, position, velocity, 0, mass)
 {
 
 	for (int i = 0; i < numpoints; i++)
@@ -15,14 +15,22 @@ Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float radiu
 		float sn = sinf(theta);
 		float cs = cosf(theta);
 
-		glm::vec2 currentpoint(sn, cs);
+		glm::vec2 currentpoint(sn, -cs);
 
 		currentpoint *= -radius;
 
 		m_points.push_back(currentpoint);
 
 	}
+	//translate points into relative local space
+	for (unsigned int i = 0; i < m_points.size(); i++)
+	{
+		
+			m_localPoints.push_back(m_points[i] + m_position);
+		
+	}
 
+	m_colour = colour;
 }
 
 
@@ -48,9 +56,11 @@ void Polygon::reCalculateLocalPoints()
 {
 	for (unsigned int i = 0; i < m_points.size(); i++)
 	{
-		m_points[i];
+		m_localPoints[i] =  (m_points[i] + m_position);
 	}
 }
+
+
 
 void Polygon::calculateNormals()
 {
@@ -84,12 +94,26 @@ void Polygon::calculateNormals()
 
 void Polygon::makeGizmo()
 {
-	for (unsigned int i = 0; i < m_points.size(); i++)
+	for (unsigned int i = 0; i < m_localPoints.size(); i++)
 	{
-		glm::vec2 p1 = m_points[i];
-		glm::vec2 p2 = (m_points[i == m_points.size() - 1 ? 0 : i + 1]);
+		glm::vec2 p1 = m_localPoints[i];
+		glm::vec2 p2 = (m_localPoints[i == m_localPoints.size() - 1 ? 0 : i + 1]);
 
 		aie::Gizmos::add2DTri(m_position, p1, p2, m_colour);
 	}
 
+}
+
+void Polygon::fixedUpdate(glm::vec2 gravity, float timestep)
+{
+	//handle motion
+//RigidBody:fixedUpdate(gravity, timestep);
+	//RigidBody* rigidBody = dynamic_cast<RigidBody*>(this);
+	//if (rigidBody != nullptr)
+	//{
+	//	rigidBody->fixedUpdate(gravity, timestep);
+	//}
+	RigidBody::fixedUpdate(gravity, timestep);
+	//update the position of the vertex points
+	reCalculateLocalPoints();
 }

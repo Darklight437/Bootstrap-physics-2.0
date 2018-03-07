@@ -5,7 +5,7 @@ class Polygon :
 	public RigidBody
 {
 public:
-	Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float radius, int points);
+	Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float radius, int points, glm::vec4 colour);
 	~Polygon();
 
 	glm::vec2 getpoint(unsigned int index);
@@ -16,6 +16,7 @@ protected:
 
 	void calculateNormals();
 	void makeGizmo();
+	void fixedUpdate(glm::vec2 gravity, float timestep);
 
 	std::vector<glm::vec2> m_points;
 	std::vector<glm::vec2> m_normals;
