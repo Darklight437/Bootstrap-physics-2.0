@@ -195,9 +195,14 @@ bool PhysicsScene::Poly2Poly(PhysicsObject* obj1, PhysicsObject* obj2)
 
 	if (poly1 != nullptr && poly2 != __nullptr)
 	{
+		//get the vertex points of each polygon
+		std::vector<glm::vec2> points1 = poly1->getLocalPointsInWorldSpace();
+		std::vector<glm::vec2> points2 = poly2->getLocalPointsInWorldSpace();
 
+		//get the normals of each poly
 
-
+		std::vector<glm::vec2> normals1 = poly1->getLocalNormals();
+		std::vector<glm::vec2> normals2 = poly2->getLocalNormals();
 
 
 

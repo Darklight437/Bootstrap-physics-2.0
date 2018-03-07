@@ -9,7 +9,8 @@ Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float radiu
 
 	for (int i = 0; i < numpoints; i++)
 	{
-
+		//TODO
+		//Use this to rotate normals in calculatelocalNormals
 		float theta = glm::radians(i * 360 / (float)numpoints);
 
 		float sn = sinf(theta);
@@ -51,9 +52,10 @@ glm::vec2 Polygon::getpoint(unsigned int index)
 	
 	return glm::vec2(0);
 }
-
+//hands out the local points but calculated live
 std::vector<glm::vec2> Polygon::getLocalPointsInWorldSpace()
 {
+	
 	std::vector<glm::vec2> lPoints;
 	for (unsigned int i = 0; i < m_localPoints.size(); i++)
 	{
@@ -121,4 +123,10 @@ void Polygon::fixedUpdate(glm::vec2 gravity, float timestep)
 	RigidBody::fixedUpdate(gravity, timestep);
 	//update the position of the vertex points
 	reCalculateLocalPoints();
+}
+
+void Polygon::calculateLocalNormals()
+{
+	//rotate these
+
 }
