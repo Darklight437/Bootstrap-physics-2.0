@@ -46,7 +46,7 @@ bool aieProject2D1App::startup()
 	//	m_PhysicsScene->addActor(new Sphere(glm::vec2(40 - i * 5, 5), glm::vec2(-25, 1), 1.0f, 2.0f, 1.1f, glm::vec4(0, 1, 0, 1)));
 	//}
 	
-	m_PhysicsScene->addActor(new Polygon(glm::vec2(20, 10), glm::vec2(0), 1.0f, 5, 3));
+	m_PhysicsScene->addActor(new Polygon(glm::vec2(20, 10), glm::vec2(0), 1.0f, 5, 4));
 	//m_PhysicsScene->addActor(new Sphere(glm::vec2(-40, 0), glm::vec2(15, 0), 1.0f, 5.0f, 0.3f, glm::vec4(1, 0, 1, 1)));
 	
 	

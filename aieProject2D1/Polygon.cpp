@@ -19,6 +19,8 @@ Polygon::Polygon(glm::vec2 position, glm::vec2 velocity, float mass, float radiu
 
 		currentpoint *= -radius;
 
+		m_points.push_back(currentpoint);
+
 	}
 
 }
@@ -40,6 +42,14 @@ glm::vec2 Polygon::getpoint(unsigned int index)
 	}
 	
 	return glm::vec2(0);
+}
+
+void Polygon::reCalculateLocalPoints()
+{
+	for (unsigned int i = 0; i < m_points.size(); i++)
+	{
+		m_points[i]
+	}
 }
 
 void Polygon::calculateNormals()

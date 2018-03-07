@@ -9,6 +9,7 @@ public:
 	~Polygon();
 
 	glm::vec2 getpoint(unsigned int index);
+	void reCalculateLocalPoints();
 
 protected:
 

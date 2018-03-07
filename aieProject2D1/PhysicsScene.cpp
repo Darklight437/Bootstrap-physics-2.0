@@ -4,6 +4,7 @@
 #include "Plane.h"
 #include "box.h"
 #include "OBB.h"
+#include "Polygon.h"
 #include <glm\ext.hpp>
 #include <iostream>
 
