@@ -52,6 +52,16 @@ glm::vec2 Polygon::getpoint(unsigned int index)
 	return glm::vec2(0);
 }
 
+std::vector<glm::vec2> Polygon::getLocalPointsInWorldSpace()
+{
+	std::vector<glm::vec2> lPoints;
+	for (unsigned int i = 0; i < m_localPoints.size(); i++)
+	{
+		lPoints.push_back(m_position + m_localPoints[i]);
+	}
+	return lPoints;
+}
+
 void Polygon::reCalculateLocalPoints()
 {
 	for (unsigned int i = 0; i < m_points.size(); i++)
