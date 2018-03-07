@@ -168,8 +168,11 @@ bool PhysicsScene::Poly2Plane(PhysicsObject *, PhysicsObject *)
 
 bool PhysicsScene::Plane2Poly(PhysicsObject* obj1, PhysicsObject* obj2)
 {
-	PhysicsObject* new1 = 
-	return false;
+	//swaps and calls the better func
+	PhysicsObject* new1 = obj2;
+	PhysicsObject* new2 = obj1;
+	Poly2Plane(new1, new2);
+	return true;
 }
 
 bool PhysicsScene::Poly2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
