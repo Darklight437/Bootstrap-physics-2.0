@@ -107,12 +107,7 @@ void Polygon::makeGizmo()
 void Polygon::fixedUpdate(glm::vec2 gravity, float timestep)
 {
 	//handle motion
-//RigidBody:fixedUpdate(gravity, timestep);
-	//RigidBody* rigidBody = dynamic_cast<RigidBody*>(this);
-	//if (rigidBody != nullptr)
-	//{
-	//	rigidBody->fixedUpdate(gravity, timestep);
-	//}
+
 	RigidBody::fixedUpdate(gravity, timestep);
 	//update the position of the vertex points
 	reCalculateLocalPoints();

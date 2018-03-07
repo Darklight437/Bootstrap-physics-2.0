@@ -193,9 +193,20 @@ bool PhysicsScene::Poly2Poly(PhysicsObject* obj1, PhysicsObject* obj2)
 	Polygon* poly1 = dynamic_cast<Polygon*>(obj1);
 	Polygon* poly2 = dynamic_cast<Polygon*>(obj2);
 
+	if (poly1 != nullptr && poly2 != __nullptr)
+	{
 
 
-	//hahaha do SAT
+
+
+
+
+
+
+
+	}
+
+	//cancel out
 	return false;
 }
 
