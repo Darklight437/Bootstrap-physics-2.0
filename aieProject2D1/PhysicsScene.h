@@ -26,7 +26,7 @@ public:
 	//possible collision types
 	static bool Plane2Plane(PhysicsObject*, PhysicsObject*) { return false; }
 	static bool Plane2Sphere(PhysicsObject*, PhysicsObject*);
-	//static bool Plane2AABB(PhysicsObject*, PhysicsObject*);
+	static bool Plane2AABB(PhysicsObject*, PhysicsObject*);
 	static bool Sphere2Plane(PhysicsObject*, PhysicsObject*);
 	static bool Sphere2Sphere(PhysicsObject*, PhysicsObject*);
 	static bool Poly2Plane(PhysicsObject*, PhysicsObject*);
@@ -35,11 +35,11 @@ public:
 	static bool Sphere2Poly(PhysicsObject*, PhysicsObject*);
 	static bool Poly2Poly(PhysicsObject*, PhysicsObject*);
 	
-	//static bool Sphere2AABB(PhysicsObject*, PhysicsObject*);
-	//static bool AABB2Plane(PhysicsObject*, PhysicsObject*);
-	//static bool AABB2Sphere(PhysicsObject*, PhysicsObject*);
-	//static bool AABB2AABB(PhysicsObject*, PhysicsObject*);
-	//static bool OOB2Plane(PhysicsObject*, PhysicsObject*);
+	static bool Sphere2AABB(PhysicsObject*, PhysicsObject*);
+	static bool AABB2Plane(PhysicsObject*, PhysicsObject*);
+	static bool AABB2Sphere(PhysicsObject*, PhysicsObject*);
+	static bool AABB2AABB(PhysicsObject*, PhysicsObject*);
+	static bool OOB2Plane(PhysicsObject*, PhysicsObject*);
 	
 
 protected:
