@@ -11,6 +11,7 @@ public:
 
 	void addActor(PhysicsObject* actor);
 	void removeActor(PhysicsObject* actor);
+	PhysicsObject* getLastActor();
 	void update(float deltatime);
 	void updateGizmos();
 	void debugScene();
@@ -34,13 +35,12 @@ public:
 	static bool Poly2Sphere(PhysicsObject*, PhysicsObject*);
 	static bool Sphere2Poly(PhysicsObject*, PhysicsObject*);
 	static bool Poly2Poly(PhysicsObject*, PhysicsObject*);
-	
 	static bool Sphere2AABB(PhysicsObject*, PhysicsObject*);
 	static bool AABB2Plane(PhysicsObject*, PhysicsObject*);
 	static bool AABB2Sphere(PhysicsObject*, PhysicsObject*);
 	static bool AABB2AABB(PhysicsObject*, PhysicsObject*);
 	static bool OOB2Plane(PhysicsObject*, PhysicsObject*);
-	
+	//Collisions end
 
 protected:
 	glm::vec2 m_gravity;

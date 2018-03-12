@@ -99,6 +99,15 @@ void aieProject2D1App::update(float deltaTime)
 
 	// input example
 	aie::Input* input = aie::Input::getInstance();
+	if (input->wasMouseButtonPressed(0))
+	{
+		m_PhysicsScene->addActor(new Sphere(glm::vec2(10, 10), glm::vec2(0, 9.8), 1.0f, 2.0f, glm::vec4(1, 0, 0, 1)));
+	} 
+	if (input->wasMouseButtonPressed(1))
+	{
+		m_PhysicsScene->removeActor(m_PhysicsScene->getLastActor());
+	}
+
 	aie::Gizmos::clear();
 	
 	m_PhysicsScene->update(deltaTime);

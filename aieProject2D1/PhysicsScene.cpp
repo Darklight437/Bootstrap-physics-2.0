@@ -430,3 +430,10 @@ void PhysicsScene::removeActor(PhysicsObject * actor)
 	m_actors.erase(std::find(m_actors.begin(), m_actors.end(), actor));
 	
 }
+
+PhysicsObject * PhysicsScene::getLastActor()
+{
+	PhysicsObject* lastActor;
+	lastActor = m_actors.back();
+	return lastActor;
+}
