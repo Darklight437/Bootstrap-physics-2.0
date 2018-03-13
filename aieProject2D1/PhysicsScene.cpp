@@ -370,11 +370,8 @@ bool PhysicsScene::AABB2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 			{
 				//calculate how deep the collision is occuring
 				glm::vec2 collisionDepth;
-				//if collisionPoint is + on the x from the cube center
-				if (collisionPoint.x > box->getPosition().x)
-				{
+				
 
-				}
 				//sphere->setPosition(- 0.5f * collisionDepth)
 				box->applyForce(-box->getVelocity());
 				sphere->applyForce(-sphere->getVelocity(), collisionPoint);
