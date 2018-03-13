@@ -132,6 +132,9 @@ bool PhysicsScene::Sphere2Plane(PhysicsObject* obj1, PhysicsObject* obj2)
 		if (intersection > 0)
 		{
 			glm::vec2 contact = sphere->getPosition() + (collisionNormal * -sphere->getRadius());
+
+			//contact force calculation
+			sphere->setPosition(sphere->getPosition() + collisionNormal * intersection);
 			plane->resolveCollision(sphere, contact);
 		}
 	}
@@ -150,11 +153,27 @@ bool PhysicsScene::Sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 	if (sphere1 != nullptr && sphere2 != nullptr)
 	{
 
+		glm::vec2 deltaS = (sphere2->getPosition() - sphere1->getPosition());
+		// squared distance between spheres
+		float sqrDist = glm::dot(deltaS, deltaS);
+		//deltaS *= deltaS;
+
+		float r = (sphere1->getRadius() + sphere2->getRadius());
+		r *= r;
+
 		//if spheres are overlapping
-		if (glm::distance(sphere1->getPosition(),sphere2->getPosition()) <= (sphere1->getRadius() + sphere2->getRadius()))
+		if (sqrDist <= r)
 		{
+			glm::vec2 contact = 0.5f * (sphere1->getPosition() + sphere2->getPosition());
+			float distance = std::sqrt(sqrDist);
+			glm::vec2 contactForce = 0.5f * (distance - (sphere1->getRadius() + sphere2->getRadius())) * deltaS / distance;
+
 			
-			sphere1->resolveCollision(sphere2 , 0.5f * (sphere1->getPosition() + sphere2->getPosition()), nullptr);
+
+			sphere1->setPosition(sphere1->getPosition() + contactForce);
+			sphere2->setPosition(sphere2->getPosition() - contactForce);
+
+			sphere1->resolveCollision(sphere2, contact, nullptr);
 			return true;
 		}
 	}
@@ -435,5 +454,6 @@ PhysicsObject * PhysicsScene::getLastActor()
 {
 	PhysicsObject* lastActor;
 	lastActor = m_actors.back();
+
 	return lastActor;
 }

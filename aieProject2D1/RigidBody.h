@@ -15,6 +15,7 @@ public:
 	virtual void fixedUpdate(glm::vec2 gravity, float timestep);
 	virtual void debug();
 	void applyForce(glm::vec2 force, glm::vec2 pos);
+	void setPosition(glm::vec2 newPos);
 	void resolveCollision(RigidBody* actor2, glm::vec2 contact, glm::vec2* collisionNormal);
 
 	//virtual bool checkCollision(PhysicsObject* pOther) = 0;

@@ -71,6 +71,11 @@ void RigidBody::applyForce(glm::vec2 force, glm::vec2 pos)
 
 }
 
+void RigidBody::setPosition(glm::vec2 newPos)
+{
+	m_position = newPos;
+}
+
 
 
 void RigidBody::resolveCollision(RigidBody * actor2, glm::vec2 contact, glm::vec2* collisionNormal = nullptr)

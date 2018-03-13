@@ -5,6 +5,13 @@
 
 
 
+
+
+shapeType PhysicsObject::getShapeType()
+{
+	return m_shapeID;
+}
+
 PhysicsObject::~PhysicsObject()
 {
 }

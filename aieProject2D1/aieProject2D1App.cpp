@@ -38,24 +38,27 @@ bool aieProject2D1App::startup()
 	m_PhysicsScene->setGravity(glm::vec2(0, -9.8));
 	m_PhysicsScene->setTimeStep(0.01f);
 
-	
+	//add planes
+	m_PhysicsScene->addActor(new Plane(glm::vec2(20, 10), -45.0f));
+	m_PhysicsScene->addActor(new Plane(glm::vec2(-20, 10), -45.0f));
+	m_PhysicsScene->addActor(new Plane(glm::vec2(0, 1), -40.0f));
+	m_PhysicsScene->addActor(new Plane(glm::vec2(0, 1), 40.0f));
+
+
 	//add shapes
 	                                                                    
 	for (int i = 0; i < 10; i++)
 	{
-		m_PhysicsScene->addActor(new Sphere(glm::vec2(40 - i * 5, 5), glm::vec2(-25, 1), 1.0f, 2.0f, 0.7f, glm::vec4(0, 1, 0, 1)));
+		m_PhysicsScene->addActor(new Sphere(glm::vec2(40 - i * 5, 5), glm::vec2(-25, 1), 1.0f, 2.0f, 0.0f, glm::vec4(0, 1, 0, 1)));
 	}
 	
 	//m_PhysicsScene->addActor(new Polygon(glm::vec2(20, 10), glm::vec2(0, -9.8), 1.0f, 5.0f, 7, glm::vec4(1, 0, 0, 1)));
 	m_PhysicsScene->addActor(new Sphere(glm::vec2(10, 10), glm::vec2(0, 9.8), 1.0f, 2.0f, glm::vec4(1, 0, 0, 1)));
 
 	
-	//add planes
+	
 
-	m_PhysicsScene->addActor(new Plane(glm::vec2(20, 10), -45.0f));
-	m_PhysicsScene->addActor(new Plane(glm::vec2(-20, 10), -45.0f));
-	m_PhysicsScene->addActor(new Plane(glm::vec2(0, 1), -40.0f));
-	m_PhysicsScene->addActor(new Plane(glm::vec2(0, 1), 40.0f));
+	
 
 
 	return true;
@@ -101,11 +104,15 @@ void aieProject2D1App::update(float deltaTime)
 	aie::Input* input = aie::Input::getInstance();
 	if (input->wasMouseButtonPressed(0))
 	{
-		m_PhysicsScene->addActor(new Sphere(glm::vec2(10, 10), glm::vec2(0, 9.8), 1.0f, 2.0f, glm::vec4(1, 0, 0, 1)));
+		m_PhysicsScene->addActor(new Sphere(glm::vec2(10, 10), glm::vec2(0, 9.8), 1.0f, 2.0f, 0.0f, glm::vec4(1, 0, 0, 1)));
 	} 
 	if (input->wasMouseButtonPressed(1))
 	{
-		m_PhysicsScene->removeActor(m_PhysicsScene->getLastActor());
+		if (m_PhysicsScene->getLastActor()->getShapeID() != shapeType::PLANE)
+		{
+			m_PhysicsScene->removeActor(m_PhysicsScene->getLastActor());
+		}
+		
 	}
 
 	aie::Gizmos::clear();
