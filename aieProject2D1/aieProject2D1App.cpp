@@ -47,10 +47,13 @@ bool aieProject2D1App::startup()
 
 	//add shapes
 	                                                                    
-	for (int i = 0; i < 10; i++)
-	{
-		m_PhysicsScene->addActor(new Sphere(glm::vec2(40 - i * 5, 5), glm::vec2(-25, 1), 1.0f, 2.0f, 0.0f, glm::vec4(0, 1, 0, 1)));
-	}
+	//for (int i = 0; i < 10; i++)
+	//{
+	//	m_PhysicsScene->addActor(new Sphere(glm::vec2(40 - i * 5, 5), glm::vec2(-25, 1), 1.0f, 2.0f, 0.0f, glm::vec4(0, 1, 0, 1)));
+	//}
+
+
+	m_PhysicsScene->addActor(new Box(glm::vec2(10, 3), glm::vec2(0), glm::vec2(3, 5), 1.0f, glm::vec4(0, 0, 1, 1)));
 	
 	//m_PhysicsScene->addActor(new Polygon(glm::vec2(20, 10), glm::vec2(0, -9.8), 1.0f, 5.0f, 7, glm::vec4(1, 0, 0, 1)));
 	m_PhysicsScene->addActor(new Sphere(glm::vec2(10, 10), glm::vec2(0, 9.8), 1.0f, 2.0f, glm::vec4(1, 0, 0, 1)));

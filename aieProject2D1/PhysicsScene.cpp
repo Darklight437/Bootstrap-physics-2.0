@@ -169,7 +169,6 @@ bool PhysicsScene::Sphere2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 			glm::vec2 contactForce = 0.5f * (distance - (sphere1->getRadius() + sphere2->getRadius())) * deltaS / distance;
 
 			
-
 			sphere1->setPosition(sphere1->getPosition() + contactForce);
 			sphere2->setPosition(sphere2->getPosition() - contactForce);
 
@@ -369,6 +368,8 @@ bool PhysicsScene::AABB2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 		{
 			if (test2 == true)
 			{
+				//calculate how deep the collision is occuring
+
 
 				box->applyForce(-box->getVelocity());
 				sphere->applyForce(-sphere->getVelocity(), collisionPoint);
