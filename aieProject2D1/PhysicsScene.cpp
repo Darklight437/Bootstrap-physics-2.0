@@ -362,6 +362,10 @@ bool PhysicsScene::AABB2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 		//if collisionpoint is (within box) then collision has occurred
 		//left of boxright & right of boxleft
 		//up of boxdown & down of boxup
+
+		//theoretical collision check to get closest point from circle to box
+		//float deltaX = sphere->getPosition().x - 
+
 		bool test1 = ((box->getCorner(1).x < collisionPoint.x) && (box->getCorner(2).x > collisionPoint.x));
 		bool test2 = (box->getCorner(1).y > collisionPoint.y && box->getCorner(3).y < collisionPoint.y);
 		if (test1 == true)
