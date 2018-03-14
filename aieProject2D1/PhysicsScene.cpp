@@ -369,7 +369,7 @@ bool PhysicsScene::AABB2Sphere(PhysicsObject* obj1, PhysicsObject* obj2)
 			if (test2 == true)
 			{
 				//calculate how deep the collision is occuring
-				glm::vec2 collisionDepth;
+				//glm::vec2 collisionDepth;
 				
 
 				//sphere->setPosition(- 0.5f * collisionDepth)
